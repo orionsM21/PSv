@@ -1,0 +1,151 @@
+<manifest
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    package="com.m21.shivam">
+
+     <!-- 🔍 Queries -->
+    <queries>
+        <intent>
+            <action android:name="android.intent.action.VIEW" />
+            <category android:name="android.intent.category.DEFAULT" />
+            <data android:mimeType="*/*" />
+        </intent>
+        <intent>
+            <action android:name="android.intent.action.MANAGE_APP_ALL_FILES_ACCESS_PERMISSION" />
+        </intent>
+        <intent>
+            <action android:name="android.intent.action.INSTALL_PACKAGE" />
+            <data android:scheme="package" />
+        </intent>
+    </queries>
+    
+<!-- 🔓 All Files Access (Android 11+) -->
+<uses-permission
+    android:name="android.permission.MANAGE_EXTERNAL_STORAGE"
+    tools:ignore="ScopedStorage" />
+
+    <!-- 🌐 Internet -->
+    <uses-permission android:name="android.permission.INTERNET" />
+
+    <!-- 📸 Camera -->
+    <uses-permission android:name="android.permission.CAMERA" />
+
+    <!-- 📂 Storage (Android 12 and below) -->
+    <uses-permission
+        android:name="android.permission.READ_EXTERNAL_STORAGE"
+        android:maxSdkVersion="32" />
+
+    <uses-permission
+        android:name="android.permission.WRITE_EXTERNAL_STORAGE"
+        android:maxSdkVersion="29" />
+
+    <!-- 📂 Media (Android 13+) -->
+    <uses-permission android:name="android.permission.READ_MEDIA_IMAGES" />
+    <uses-permission android:name="android.permission.READ_MEDIA_VIDEO" />
+    <uses-permission android:name="android.permission.READ_MEDIA_AUDIO" />
+
+    <!-- 📍 Location -->
+    <uses-permission android:name="android.permission.ACCESS_FINE_LOCATION" />
+    <uses-permission android:name="android.permission.ACCESS_COARSE_LOCATION" />
+    <uses-permission android:name="android.permission.ACCESS_BACKGROUND_LOCATION" />
+
+    <!-- 🔔 Notifications -->
+    <uses-permission android:name="android.permission.POST_NOTIFICATIONS" />
+    <uses-permission android:name="android.permission.VIBRATE" />
+
+    <!-- 🎤 Audio -->
+    <uses-permission android:name="android.permission.RECORD_AUDIO" />
+
+    <!-- 🔌 Bluetooth -->
+    <uses-permission android:name="android.permission.BLUETOOTH_CONNECT" />
+    <uses-permission android:name="android.permission.BLUETOOTH_SCAN" />
+
+    <!-- ⚙️ Services -->
+    <uses-permission android:name="android.permission.FOREGROUND_SERVICE" />
+    <uses-permission android:name="android.permission.FOREGROUND_SERVICE_LOCATION" />
+    <uses-permission android:name="android.permission.RECEIVE_BOOT_COMPLETED" />
+    <uses-permission android:name="android.permission.WAKE_LOCK" />
+
+    <!-- ⏰ Alarm -->
+    <uses-permission
+        android:name="android.permission.SCHEDULE_EXACT_ALARM"
+        tools:ignore="MissingPermission" />
+
+    <application
+        android:name=".MainApplication"
+        android:label="@string/app_name"
+        android:icon="@mipmap/go_fin"
+        android:roundIcon="@mipmap/go_fin"
+        android:allowBackup="false"
+        android:theme="@style/AppTheme"
+        android:networkSecurityConfig="@xml/network_security_config"
+        android:usesCleartextTraffic="true">
+
+        <!-- 🌍 Google Maps -->
+        <meta-data
+            android:name="com.google.android.geo.API_KEY"
+            android:value="AIzaSyA-qydLv54Exn34c4gPxzhPvbKRogjWQJA" />
+
+        <activity
+            android:name=".MainActivity"
+            android:exported="true"
+            android:launchMode="singleTask"
+            android:windowSoftInputMode="adjustResize"
+            android:configChanges="keyboard|keyboardHidden|orientation|screenLayout|screenSize|smallestScreenSize|uiMode">
+
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
+
+            <intent-filter>
+                <action android:name="android.intent.action.VIEW" />
+                <category android:name="android.intent.category.DEFAULT" />
+                <category android:name="android.intent.category.BROWSABLE" />
+                <data android:scheme="com.m21.shivam" android:host="open" />
+            </intent-filter>
+
+        </activity>
+
+        <!-- 📂 File Provider -->
+        <provider
+            android:name="androidx.core.content.FileProvider"
+            android:authorities="com.m21.shivam.provider"
+            android:exported="false"
+            android:grantUriPermissions="true">
+            <meta-data
+                android:name="android.support.FILE_PROVIDER_PATHS"
+                android:resource="@xml/file_paths" />
+        </provider>
+
+        <!-- 🔁 Background Services -->
+        <service
+            android:name="com.transistorsoft.rnbackgroundfetch.HeadlessJobService"
+            android:permission="android.permission.BIND_JOB_SERVICE"
+            android:exported="true" />
+
+        <service
+            android:name="com.supersami.foregroundservice.ForegroundService"
+            android:exported="false"
+            android:foregroundServiceType="location|dataSync" />
+
+        <service
+            android:name="com.asterinet.react.bgactions.RNBackgroundActionsTask"
+            android:exported="false"
+            android:foregroundServiceType="location" />
+
+        <!-- 🔄 Boot Receiver -->
+        <receiver
+            android:name="com.transistorsoft.tsbackgroundfetch.BootReceiver"
+            android:permission="android.permission.RECEIVE_BOOT_COMPLETED"
+            android:exported="true">
+            <intent-filter>
+                <action android:name="android.intent.action.BOOT_COMPLETED" />
+            </intent-filter>
+        </receiver>
+
+        <!-- 🔥 Firebase -->
+       
+
+    </application>
+</manifest>
