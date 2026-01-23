@@ -131,17 +131,17 @@ const CallSummary = ({ navigation, route }) => {
     // API helpers
     // -------------------------------
     const apiGet = async (path) => {
-        const res = await apiClient.get(`${BASE_URL}${path}`, { headers: authHeaders });
+        const res = await apiClient.get(`${path}`, { headers: authHeaders });
         return res?.data?.data ?? null;
     };
 
     const apiPost = async (path, payload) => {
-        const res = await apiClient.post(`${BASE_URL}${path}`, payload, { headers: authHeaders });
+        const res = await apiClient.post(`${path}`, payload, { headers: authHeaders });
         return res?.data ?? null;
     };
 
     const apiPut = async (path, payload) => {
-        const res = await apiClient.put(`${BASE_URL}${path}`, payload, { headers: authHeaders });
+        const res = await apiClient.put(`${path}`, payload, { headers: authHeaders });
         return res?.data ?? null;
     };
 

@@ -380,7 +380,7 @@ console.log(countfilter, 'countfiltercountfilter')
 
   const liveTrackerAdminConfigForOnetime = () => {
     apiClient
-      .get(`${BASE_URL}getTrackingConfig`, {
+      .get(`getTrackingConfig`, {
         headers: {
           Accept: 'application/json',
           'Content-Type': 'application/json',
@@ -422,7 +422,7 @@ console.log(countfilter, 'countfiltercountfilter')
 
   const liveTrackerAdminConfig = () => {
     apiClient
-      .get(`${BASE_URL}getTrackingConfig`, {
+      .get(`getTrackingConfig`, {
         headers: {
           Accept: 'application/json',
           'Content-Type': 'application/json',
@@ -526,7 +526,7 @@ console.log(countfilter, 'countfiltercountfilter')
 
   const getStates = async () => {
     try {
-      const response = await apiClient.get(`${BASE_URL}getAllStates`, {
+      const response = await apiClient.get(`getAllStates`, {
         headers: {
           Accept: 'application/json',
           'Content-Type': 'application/json',
@@ -549,7 +549,7 @@ console.log(countfilter, 'countfiltercountfilter')
   const getCities = async stateId => {
     try {
       const response = await apiClient.get(
-        `${BASE_URL}getCityByState/${stateId}/0/0`,
+        `getCityByState/${stateId}/0/0`,
         {
           headers: {
             Accept: 'application/json',
@@ -575,7 +575,7 @@ console.log(countfilter, 'countfiltercountfilter')
 
   const getPortfolio = async () => {
     try {
-      const response = await apiClient.get(`${BASE_URL}getAllPortfolio`, {
+      const response = await apiClient.get(`getAllPortfolio`, {
         headers: {
           Accept: 'application/json',
           'Content-Type': 'application/json',
@@ -602,7 +602,7 @@ console.log(countfilter, 'countfiltercountfilter')
     try {
       setLoadingUserNames(true);
       const response = await apiClient.get(
-        `${BASE_URL}getAllocatedLowerHierarchyByUserId/${userProfile?.userId}`,
+        `getAllocatedLowerHierarchyByUserId/${userProfile?.userId}`,
         {
           headers: {
             Accept: 'application/json',
@@ -641,7 +641,7 @@ console.log(countfilter, 'countfiltercountfilter')
     try {
       setLoadingUserNames(true);
       const response = await apiClient.get(
-        `${BASE_URL}getAgencyByUserId/${userProfile?.userId}`,
+        `getAgencyByUserId/${userProfile?.userId}`,
         {
           headers: {
             Accept: 'application/json',
@@ -675,7 +675,7 @@ console.log(countfilter, 'countfiltercountfilter')
     try {
       setLoadingUserNames(true);
       const response = await apiClient.get(
-        `${BASE_URL}getUserByAgency/${agencyId}`,
+        `getUserByAgency/${agencyId}`,
         {
           headers: {
             Accept: 'application/json',
@@ -876,7 +876,7 @@ console.log(countfilter, 'countfiltercountfilter')
       }
 
       const response = await apiClient.post(
-        `${BASE_URL}getUserByFilter/${userProfile?.userId}`,
+        `getUserByFilter/${userProfile?.userId}`,
         requestBody,
         {
           headers: {
@@ -937,7 +937,7 @@ console.log(countfilter, 'countfiltercountfilter')
     try {
       let requestBody = null;
       const response = await apiClient.post(
-        `${BASE_URL}getLiveTrackerDashboard/${userProfile?.userId}`,
+        `getLiveTrackerDashboard/${userProfile?.userId}`,
         requestBody,
         {
           headers: {
@@ -986,7 +986,7 @@ console.log(countfilter, 'countfiltercountfilter')
       // }
 
       const response = await apiClient.post(
-        `${BASE_URL}getLiveTrackerDashboard/${userProfile?.userId}`,
+        `getLiveTrackerDashboard/${userProfile?.userId}`,
         requestBody,
         {
           headers: {
@@ -1009,7 +1009,7 @@ console.log(countfilter, 'countfiltercountfilter')
       let requestBody = null;
 
       const response = await apiClient.post(
-        `${BASE_URL}getUserByFilter/${userProfile?.userId}`,
+        `getUserByFilter/${userProfile?.userId}`,
         requestBody,
         {
           headers: {
@@ -1066,7 +1066,7 @@ console.log(countfilter, 'countfiltercountfilter')
       }
 
       const response = await apiClient.post(
-        `${BASE_URL}getUserByFilter/${userProfile?.userId}`,
+        `getUserByFilter/${userProfile?.userId}`,
         requestBody,
         {
           headers: {
@@ -1110,7 +1110,7 @@ console.log(countfilter, 'countfiltercountfilter')
       setLoadingUserNames(true);
 
       const response = await apiClient.get(
-        `${BASE_URL}getAgencyByUserId/${userProfile?.userId}`,
+        `getAgencyByUserId/${userProfile?.userId}`,
         {
           headers: {
             Accept: 'application/json',
@@ -1158,7 +1158,7 @@ console.log(countfilter, 'countfiltercountfilter')
     try {
       setLoadingUserNames(true);
 
-      const response = await apiClient.get(`${BASE_URL}getAllAgency`, {
+      const response = await apiClient.get(`getAllAgency`, {
         headers: {
           Accept: 'application/json',
           'Content-Type': 'application/json',
@@ -1204,7 +1204,7 @@ console.log(countfilter, 'countfiltercountfilter')
       setLoadingUserNames(true);
       const agencyIdsString = agencyIds.join(',');
       const response = await apiClient.get(
-        `${BASE_URL}getAllUserByAgencyId/${agencyIdsString}`,
+        `getAllUserByAgencyId/${agencyIdsString}`,
         {
           headers: {
             Accept: 'application/json',
@@ -1247,7 +1247,7 @@ console.log(countfilter, 'countfiltercountfilter')
     };
 
     try {
-      const response = await apiClient.post(`${BASE_URL}mapDataByUserId`, payload, {
+      const response = await apiClient.post(`mapDataByUserId`, payload, {
         headers: {
           Accept: 'application/json',
           'Content-Type': 'application/json',
@@ -1540,7 +1540,7 @@ console.log(countfilter, 'countfiltercountfilter')
 
   const getUserTypeData = () => {
     apiClient
-      .get(`${BASE_URL}getAllUserType`, {
+      .get(`getAllUserType`, {
         headers: {
           Accept: 'application/json',
           'Content-Type': 'application/json',

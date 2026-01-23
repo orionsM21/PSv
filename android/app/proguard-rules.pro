@@ -70,3 +70,5 @@
 -keep class com.ansman.* { *; }
 -keep class com.aps.* { *; }
 -keep class com.ihsanbal.* { *; }
+
+

@@ -4,16 +4,16 @@ import { BASE_URL } from "../../../service/api";
 
 
 export const userApi = {
-    getAllStates: (token) => apiClient.get(`${BASE_URL}getAllStates`, { headers: { Authorization: `Bearer ${token}` } }),
-    getCityByState: (stateId, token) => apiClient.get(`${BASE_URL}getCityByState/${stateId}/0/0`, { headers: { Authorization: `Bearer ${token}` } }),
-    getAllPortfolio: (token) => apiClient.get(`${BASE_URL}getAllPortfolio`, { headers: { Authorization: `Bearer ${token}` } }),
-    getAllocatedLowerHierarchyByUserId: (userId, token) => apiClient.get(`${BASE_URL}getAllocatedLowerHierarchyByUserId/${userId}`, { headers: { Authorization: `Bearer ${token}` } }),
-    getAllUserType: (token) => apiClient.get(`${BASE_URL}getAllUserType`, { headers: { Authorization: `Bearer ${token}` } }),
-    getUserByAgency: (agencyId, token) => apiClient.get(`${BASE_URL}getUserByAgency/${agencyId}`, { headers: { Authorization: `Bearer ${token}` } }),
-    getAllUserByAgencyId: (agencyIdsString, token) => apiClient.get(`${BASE_URL}getAllUserByAgencyId/${agencyIdsString}`, { headers: { Authorization: `Bearer ${token}` } }),
+    getAllStates: (token) => apiClient.get(`getAllStates`, { headers: { Authorization: `Bearer ${token}` } }),
+    getCityByState: (stateId, token) => apiClient.get(`getCityByState/${stateId}/0/0`, { headers: { Authorization: `Bearer ${token}` } }),
+    getAllPortfolio: (token) => apiClient.get(`getAllPortfolio`, { headers: { Authorization: `Bearer ${token}` } }),
+    getAllocatedLowerHierarchyByUserId: (userId, token) => apiClient.get(`getAllocatedLowerHierarchyByUserId/${userId}`, { headers: { Authorization: `Bearer ${token}` } }),
+    getAllUserType: (token) => apiClient.get(`getAllUserType`, { headers: { Authorization: `Bearer ${token}` } }),
+    getUserByAgency: (agencyId, token) => apiClient.get(`getUserByAgency/${agencyId}`, { headers: { Authorization: `Bearer ${token}` } }),
+    getAllUserByAgencyId: (agencyIdsString, token) => apiClient.get(`getAllUserByAgencyId/${agencyIdsString}`, { headers: { Authorization: `Bearer ${token}` } }),
     getUserByFilter: (userId, payload, token) =>
         apiClient({
-            url: `${BASE_URL}getUserByFilter/${userId}`,
+            url: `getUserByFilter/${userId}`,
             method: "POST",
             headers: {
                 Accept: "application/json",

@@ -22,7 +22,7 @@ import { useDispatch, useSelector } from "react-redux";
 import MaterialIcons from "react-native-vector-icons/MaterialIcons";
 import { useNavigation, useRoute } from "@react-navigation/native";
 import moment from "moment";
-import axios from "axios";
+
 
 import {
   BLEPrinter,
@@ -233,7 +233,7 @@ Date: ${moment(dateTime).format("DD-MM-YYYY hh:mm A")}
     if (!data?.paymentId) return;
 
     apiClient
-      .get(`${BASE_URL}getReceiptByPaymentId/${data.paymentId}`, {
+      .get(`getReceiptByPaymentId/${data.paymentId}`, {
         headers: { Authorization: `Bearer ${token}` },
       })
       .then((res) => {
@@ -247,7 +247,7 @@ Date: ${moment(dateTime).format("DD-MM-YYYY hh:mm A")}
   const getEvidence = () => {
     // dispatch(showLoader(true));
     apiClient
-      .get(`${BASE_URL}getDocumentByPaymentId/${data.paymentId}`, {
+      .get(`getDocumentByPaymentId/${data.paymentId}`, {
         headers: { Authorization: `Bearer ${token}` },
       })
       .then((res) => {
@@ -259,7 +259,7 @@ Date: ${moment(dateTime).format("DD-MM-YYYY hh:mm A")}
 
   const getSuccessContacts = () => {
     apiClient
-      .get(`${BASE_URL}getSuccessDataByLoanNumber/${data.loanAccountNumber}`, {
+      .get(`getSuccessDataByLoanNumber/${data.loanAccountNumber}`, {
         headers: { Authorization: `Bearer ${token}` },
       })
       .then((res) => setSmsEmailData(res.data?.data || {}));

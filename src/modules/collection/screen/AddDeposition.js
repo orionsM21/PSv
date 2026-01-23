@@ -120,7 +120,7 @@ const AddDeposition = () => {
         // dispatch(showLoader(true));
         try {
             const payload = { payments: data };
-            const res = await apiClient.post(`${BASE_URL}getDepositionAmountSum`, payload, {
+            const res = await apiClient.post(`getDepositionAmountSum`, payload, {
                 headers: {
                     Authorization: `Bearer ${token}`,
                     Accept: "application/json",
@@ -218,7 +218,7 @@ const AddDeposition = () => {
             };
 
             const res = await apiClient.upload(
-                `${BASE_URL}addDepositionEvidence/${id}`,
+                `addDepositionEvidence/${id}`,
                 {
                     fieldName: "depositionfile",
                     file: payload,
@@ -260,7 +260,7 @@ const AddDeposition = () => {
                 lenderName: form.lenderName,
             };
 
-            const res = await apiClient.post(`${BASE_URL}addDeposition`, payload, {
+            const res = await apiClient.post(`addDeposition`, payload, {
                 headers: {
                     Authorization: `Bearer ${token}`, Accept: "application/json",
                     "Content-Type": "application/json",

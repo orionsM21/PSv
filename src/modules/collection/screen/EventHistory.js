@@ -70,7 +70,7 @@ const EventHistory = () => {
   const loadCallSummary = async () => {
     try {
       const res = await apiClient.get(
-        `${BASE_URL}getCallHistoryByLan/${data1.loanAccountNumber}`,
+        `getCallHistoryByLan/${data1.loanAccountNumber}`,
         { headers: apiHeaders }
       );
       setCallSummaryData(res.data?.data || []);
@@ -85,11 +85,11 @@ const EventHistory = () => {
 
       const [, communicationRes] = await Promise.all([
         apiClient.get(
-          `${BASE_URL}getAllActivityHistoryByLoanAccountNumber/${lan}`,
+          `getAllActivityHistoryByLoanAccountNumber/${lan}`,
           { headers: apiHeaders }
         ),
         apiClient.get(
-          `${BASE_URL}communicationHistoryByLan/${lan}`,
+          `communicationHistoryByLan/${lan}`,
           { headers: apiHeaders }
         ),
       ]);
@@ -110,10 +110,10 @@ const EventHistory = () => {
 
       // Fetch both in PARALLEL → much faster
       const [activityRes, commRes] = await Promise.all([
-        apiClient.get(`${BASE_URL}getAllActivityHistoryByLoanAccountNumber/${lan}`,
+        apiClient.get(`getAllActivityHistoryByLoanAccountNumber/${lan}`,
           { headers: apiHeaders }
         ),
-        apiClient.get(`${BASE_URL}communicationHistoryByLan/${lan}`,
+        apiClient.get(`communicationHistoryByLan/${lan}`,
           { headers: apiHeaders }
         )
       ]);
@@ -196,28 +196,28 @@ const EventHistory = () => {
           case "dispute":
           case "rtp":
             res = await apiClient.get(
-              `${BASE_URL}getEvedenceDetailsByEvedenceId/${id}`,
+              `getEvedenceDetailsByEvedenceId/${id}`,
               { headers: apiHeaders }
             );
             break;
 
           case "payment":
             res = await apiClient.get(
-              `${BASE_URL}getPaymentDetailsByPaymentId/${id}`,
+              `getPaymentDetailsByPaymentId/${id}`,
               { headers: apiHeaders }
             );
             break;
 
           case "request":
             res = await apiClient.get(
-              `${BASE_URL}getRequestEvidance/${id}`,
+              `getRequestEvidance/${id}`,
               { headers: apiHeaders }
             );
             break;
 
           case "raiseException":
             res = await apiClient.get(
-              `${BASE_URL}getEvedenceraiseExceptionEvedenceId/${id}`,
+              `getEvedenceraiseExceptionEvedenceId/${id}`,
               { headers: apiHeaders }
             );
             break;
@@ -225,7 +225,7 @@ const EventHistory = () => {
           default:
             // Try a generic endpoint (if you have) or fallback to dispute
             res = await apiClient.get(
-              `${BASE_URL}getEvedenceDetailsByEvedenceId/${id}`,
+              `getEvedenceDetailsByEvedenceId/${id}`,
               { headers: apiHeaders }
             );
         }

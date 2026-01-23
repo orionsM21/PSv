@@ -755,7 +755,7 @@ const InitaiateRCUProcess = ({ route }) => {
                 try {
                     const response = await RNFetchBlob.fetch(
                         "PUT",
-                        `${BASE_URL}createInitiateVerification`,
+                        `createInitiateVerification`,
                         {
                             'Content-Type': 'multipart/form-data',
                             Authorization: `Bearer ${token}`,

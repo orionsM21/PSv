@@ -22,6 +22,7 @@ import FormInput from '../components/FormInput';
 import { detectDocumentType } from './OCR/configs/etectDocumentType';
 import { parsePanOCR } from './OCR/parser/parsePanOCR';
 import OCRReviewScreen from './OCR/OCRReviewScreen';
+import OCRManualSelectScreen from './OCR/OCRManualSelectScreen';
 
 // Gender dropdown
 export const GenderList = [
@@ -49,6 +50,8 @@ const pincodesFromApi = [
   { pincode: 110001 },
 ];
 
+
+
 const Dashboard = () => {
   const { openDrawer, } = useContext(DrawerContext);
   const [formData, setFormData] = useState({
@@ -70,16 +73,22 @@ const Dashboard = () => {
   const [selectedLeadSourceDropdown, setSelectedLeadSourceDropdown] = useState(null);
   const [selectedbranchName, setSelectedbranchName] = useState(null);
   const [selectedPincodes, setSelectedPincodes] = useState(null);
-  // console.log(firstName, middleName, 'firstNamefirstName')
+  // 
   const [rawRows, setRawRows] = useState([]);   // Excel rows OR OCR lines
   const [fields, setFields] = useState({}); // Dynamic fields object
   const [recognizedText, setrecognizedText] = useState([])
   const [tasks, setTasks] = useState([]);
   const [ocrDraft, setOcrDraft] = useState(null);
   const [selectedRowIndex, setSelectedRowIndex] = useState(null);
+  const [ocrBlocks, setOcrBlocks] = useState([]);
+  const [ocrImage, setOcrImage] = useState(null);
+  const [showManualSelect, setShowManualSelect] = useState(false);
+  const [originalImageSize, setOriginalImageSize] = useState(null);
+  const [autoSelectedKeys, setAutoSelectedKeys] = useState([]);
+  const [imageLayout, setImageLayout] = useState(null);
 
   const [showReview, setShowReview] = useState(false);
-  console.log(recognizedText, 'uploadfieldsFiledata')
+
   const handleTextChange = useCallback((value, index) => {
     setTasks(prev => {
       const updated = [...prev];
@@ -87,6 +96,86 @@ const Dashboard = () => {
       return updated;
     });
   }, []);
+
+  const PAN_REGEX = /^[A-Z]{5}[0-9]{4}[A-Z]$/;
+  const DOB_REGEX = /\b\d{2}\/\d{2}\/\d{4}\b/;
+
+  // 1️⃣ Detect PAN card region
+  const getPanRegion = (blocks) => {
+    const anchor = blocks.find(b =>
+      /PERMANENT|ACCOUNT|INCOME\s*TAX/i.test(b.text)
+    );
+
+    if (!anchor) return null;
+
+    return {
+      left: anchor.box.left - anchor.box.width * 1,
+      top: anchor.box.top - anchor.box.height * 3,
+      right: anchor.box.left + anchor.box.width * 3,
+      bottom: anchor.box.top + anchor.box.height * 7,
+    };
+
+  };
+
+
+  // 2️⃣ Detect Name values using label proximity
+  const isNameValue = (block, blocks) => {
+    return blocks.some(label => {
+      const labelText = label.text
+        .replace(/[^A-Z]/gi, '')
+        .toUpperCase();
+
+      // STRICT label detection
+      if (!['NAME', 'FATHERSNAME'].includes(labelText)) return false;
+
+      const verticalDistance = Math.abs(block.box.top - label.box.top);
+      const horizontalDistance = Math.abs(block.box.left - label.box.left);
+
+      // ✅ SAME LINE or ABOVE or BELOW
+      const verticallyNear = verticalDistance < 140;
+      const horizontallyNear = horizontalDistance < 350;
+
+      // ❌ Avoid matching the label itself
+      if (block === label) return false;
+
+      return verticallyNear && horizontallyNear;
+    });
+  };
+
+
+
+
+  // 3️⃣ FINAL FILTER (THIS IS THE MAGIC)
+  const extractPanFieldBlocks = (blocks) => {
+    const region = getPanRegion(blocks);
+    if (!region) return [];
+
+    return blocks.filter(b => {
+      const { text, box } = b;
+      if (!box) return false;
+
+      if (
+        box.left < region.left ||
+        box.top < region.top ||
+        box.left + box.width > region.right ||
+        box.top + box.height > region.bottom
+      ) return false;
+
+      // ❌ UI junk
+      if (/(SCRIBD|VISIT|SAVE|PDF|COPYRIGHT|X$)/i.test(text)) return false;
+
+      const cleanText = text.replace(/\s/g, '');
+      const panCandidate = cleanText.replace(/[^A-Z0-9]/gi, '');
+      const dobCandidate = cleanText;
+
+      if (PAN_REGEX.test(panCandidate)) return true;
+      if (DOB_REGEX.test(dobCandidate)) return true;
+      if (isNameValue(b, blocks)) return true;
+
+      return false;
+    });
+  };
+
 
 
   const FORM_FIELD_MAP = [
@@ -205,71 +294,6 @@ const Dashboard = () => {
     return true;
   };
 
-  const openCameraAndScan = async () => {
-    try {
-      const hasPermission = await requestCameraPermission();
-      if (!hasPermission) {
-        Alert.alert("Permission Denied", "Camera access is required.");
-        return;
-      }
-
-      const result = await launchCamera({
-        mediaType: "photo",
-        quality: 1,
-        saveToPhotos: false,
-      });
-
-      if (!result || result.didCancel) return;
-
-      if (result.errorCode) {
-        Alert.alert("Camera Error", result.errorMessage || "Unknown error");
-        return;
-      }
-
-      if (!result.assets?.length) {
-        Alert.alert("Error", "No image captured.");
-        return;
-      }
-
-      const imageUri = result.assets[0].uri;
-
-      // 🔥 ML Kit OCR
-      const ocrResult = await TextRecognition.recognize(imageUri);
-
-
-      /**
-       * PERFORMANCE NOTE:
-       * - flatMap avoids nested loops
-       * - join once
-       */
-      const recognizedText = ocrResult.blocks
-        .flatMap(block => block.lines)
-        .map(line => line.text)
-        .join('\n');
-
-
-      setrecognizedText(recognizedText);
-
-      const docType = detectDocumentType(recognizedText);
-      let parsedResult = {};
-
-      switch (docType) {
-        case 'PAN':
-          parsedResult = parsePanOCR(recognizedText);
-          break;
-        default:
-          return;
-      }
-
-      setOcrDraft(parsedResult);
-      setShowReview(true);
-
-    } catch (err) {
-      console.error("OCR Error:", err);
-      Alert.alert("Error", "Failed to scan document.");
-    }
-  };
-
   const normalizeExcelRow = (row = {}) => ({
     firstName: row.firstName || row['First Name'] || '',
     middleName: row.middleName || row['Middle Name'] || '',
@@ -282,6 +306,163 @@ const Dashboard = () => {
     loanPurpose: row.loanPurpose || row['Loan Purpose'] || '',
   });
 
+  const openCameraAndScan = async (mode = 'AUTO') => {
+    try {
+      const hasPermission = await requestCameraPermission();
+      if (!hasPermission) {
+        Alert.alert('Permission Denied', 'Camera access is required.');
+        return;
+      }
+
+      const result = await launchCamera({
+        mediaType: 'photo',
+        quality: 1,
+        saveToPhotos: false,
+      });
+
+      if (!result || result.didCancel) return;
+      if (result.errorCode) {
+        Alert.alert('Camera Error', result.errorMessage || 'Unknown error');
+        return;
+      }
+
+      const asset = result.assets?.[0];
+      if (!asset?.uri) {
+        Alert.alert('Error', 'No image captured.');
+        return;
+      }
+
+      const imageUri = asset.uri;
+
+      // 🔥 Get ORIGINAL image size (CRITICAL)
+      Image.getSize(imageUri, (width, height) => {
+        setOriginalImageSize({ width, height });
+      });
+
+      // 🔥 OCR (single pass)
+      const ocrResult = await TextRecognition.recognize(imageUri);
+
+      const ocrBlocks = ocrResult.blocks.flatMap(block => {
+        // Prefer lines
+        if (Array.isArray(block.lines) && block.lines.length) {
+          return block.lines.map(line => {
+            let box = line.boundingBox || block.boundingBox;
+
+            // Fallback to polygon
+            if (!box && Array.isArray(line.cornerPoints)) {
+              const xs = line.cornerPoints.map(p => p.x);
+              const ys = line.cornerPoints.map(p => p.y);
+
+              box = {
+                left: Math.min(...xs),
+                top: Math.min(...ys),
+                width: Math.max(...xs) - Math.min(...xs),
+                height: Math.max(...ys) - Math.min(...ys),
+              };
+            }
+
+            if (
+              !box ||
+              box.width <= 0 ||
+              box.height <= 0 ||
+              !line.text?.trim()
+            ) {
+              return null;
+            }
+
+            return {
+              text: line.text.trim(),
+              box,
+            };
+          }).filter(Boolean);
+        }
+
+        // Fallback: whole block
+        if (block.boundingBox && block.text?.trim()) {
+          const { left, top, right, bottom } = block.boundingBox;
+          if (right > left && bottom > top) {
+            return [{
+              text: block.text.trim(),
+              box: {
+                left,
+                top,
+                width: right - left,
+                height: bottom - top,
+              },
+            }];
+          }
+        }
+
+        return [];
+      });
+
+
+
+
+
+
+
+
+      const ocrLines = ocrBlocks.map(b => b.text).filter(Boolean);
+
+      // if (!ocrLines.length) {
+      //   Alert.alert('OCR Failed', 'No readable text detected');
+      //   return;
+      // }
+
+      setrecognizedText(ocrLines);
+
+      // 🟡 MANUAL MODE
+      if (mode === 'MANUAL') {
+        const panOnlyBlocks = extractPanFieldBlocks(ocrBlocks);
+
+        setOcrImage(imageUri);
+        setOcrBlocks(panOnlyBlocks); // 🔥 ONLY TARGET FIELDS
+        setShowManualSelect(true);
+        return;
+      }
+
+
+      // 🟢 AUTO MODE
+      const docType = detectDocumentType(ocrLines);
+      console.log(docType, 'docTypedocType')
+      let parsedResult = {};
+      let autoKeys = [];
+
+      switch (docType) {
+        case 'PAN':
+          parsedResult = parsePanOCR(ocrLines);
+          autoKeys = Object.keys(parsedResult).filter(
+            k => parsedResult[k]?.value
+          );
+          break;
+
+        default:
+          Alert.alert('Unsupported Document', 'Document type not recognized');
+          return;
+      }
+
+      setAutoSelectedKeys(autoKeys); // 🔥 for auto highlight
+      setOcrDraft(parsedResult);
+      setShowReview(true);
+
+    } catch (err) {
+      console.error('OCR Error:', err);
+      Alert.alert('Error', 'Failed to scan document.');
+    }
+  };
+
+  const onCameraPress = () => {
+    Alert.alert(
+      'OCR Mode',
+      'How do you want to capture data?',
+      [
+        { text: 'Auto Capture', onPress: () => openCameraAndScan('AUTO') },
+        { text: 'Manual Select', onPress: () => openCameraAndScan('MANUAL') },
+        { text: 'Cancel', style: 'cancel' },
+      ]
+    );
+  };
 
 
   const selectFileAutoPopulate = async () => {
@@ -304,7 +485,7 @@ const Dashboard = () => {
 
         // Convert to JSON with keys from header row
         const jsonData = XLSX.utils.sheet_to_json(sheet);
-        console.log(jsonData, 'jsonDatajsonData')
+
         if (!jsonData || jsonData.length === 0) {
           Alert.alert('Empty File', 'No data found in the Excel sheet.');
           return;
@@ -392,7 +573,7 @@ const Dashboard = () => {
     });
   }, [FORM_FIELD_MAP_Input]);
 
-  console.log(hasApplicantData, FORM_FIELD_MAP_Input, 'hasApplicantDatahasApplicantData')
+  // 
   const renderTask = useCallback(({ item, index }) => (
     <View style={styles.inputWrapper}>
       <Text style={styles.label}>Task {index + 1}</Text>
@@ -460,7 +641,7 @@ const Dashboard = () => {
 
             {/* ACTION BUTTONS */}
             <View style={styles.actionRow}>
-              <TouchableOpacity onPress={openCameraAndScan} activeOpacity={0.8}>
+              <TouchableOpacity onPress={onCameraPress} activeOpacity={0.8}>
                 <Text style={styles.actionText}>Camera</Text>
               </TouchableOpacity>
 
@@ -469,6 +650,21 @@ const Dashboard = () => {
               </TouchableOpacity>
             </View>
           </View>
+          {showManualSelect && (
+            <OCRManualSelectScreen
+              imageUri={ocrImage}
+              blocks={ocrBlocks}
+              originalImageSize={originalImageSize} // 🔥 REQUIRED
+              autoSelectedKeys={autoSelectedKeys}     // 🔥 OPTIONAL (auto highlight)
+              onConfirm={(manualData) => {
+                setOcrDraft(prev => ({ ...prev, ...manualData }));
+                setShowManualSelect(false);
+                setShowReview(true);
+              }}
+              onCancel={() => setShowManualSelect(false)}
+            />
+          )}
+
 
 
           {/* ========== TASKS SECTION ========== */}

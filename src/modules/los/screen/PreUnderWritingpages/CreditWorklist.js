@@ -2063,7 +2063,7 @@ const CreditWorkList = ({ uid }) => {
 
         const response = await RNFetchBlob.fetch(
           'POST',
-          `${BASE_URL}uploadLeadCibilReport/${SelectedLeadApplicant.id}`,
+          `uploadLeadCibilReport/${SelectedLeadApplicant.id}`,
           {
             'Content-Type': 'multipart/form-data',
             Authorization: 'Bearer ' + token,
@@ -2123,7 +2123,7 @@ const CreditWorkList = ({ uid }) => {
 
         const response = await RNFetchBlob.fetch(
           'POST',
-          `${BASE_URL}uploadLeadCibilReport/${selectedCoApplicant.id}`,
+          `uploadLeadCibilReport/${selectedCoApplicant.id}`,
           {
             'Content-Type': 'multipart/form-data',
             Authorization: 'Bearer ' + token,

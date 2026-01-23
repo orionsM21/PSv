@@ -26,6 +26,9 @@ export default function GoldDrawerUI() {
 
     const MENU = React.useMemo(() => ([
         { label: "Dashboard", icon: "grid-outline", route: "Dashboard" },
+
+
+        { label: "New Loan", icon: "people-outline", route: "New Loan" },
         { label: "Customers", icon: "people-outline", route: "Customers" },
         { label: "Profile", icon: "person-circle-outline", route: "Profile" },
     ]), []);

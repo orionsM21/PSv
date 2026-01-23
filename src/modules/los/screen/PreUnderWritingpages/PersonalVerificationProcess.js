@@ -972,7 +972,7 @@ const PersonalVerificationProcess = ({ route }) => {
       try {
         const response = await RNFetchBlob.fetch(
           'PUT',
-          `${BASE_URL}addPersonalDiscussion`,
+          `addPersonalDiscussion`,
           {
             'Content-Type': 'multipart/form-data',
             Authorization: `Bearer ${token}`,
@@ -1498,7 +1498,7 @@ const PersonalVerificationProcess = ({ route }) => {
             try {
               const response = await RNFetchBlob.fetch(
                 'PT',
-                `${BASE_URL}uploadFile/${applicantidApplicant}`,
+                `uploadFile/${applicantidApplicant}`,
                 {
                   'Content-Type': 'multipart/form-data',
                   Authorization: `Bearer ${token}`,

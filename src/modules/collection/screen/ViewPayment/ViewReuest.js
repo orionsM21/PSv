@@ -61,7 +61,7 @@ const ViewDispute = () => {
             // dispatch(showLoader(true));
             if (data?.requestId) {
                 const response = await apiClient.get(
-                    `${BASE_URL}documentRequestByRequestId/${data?.requestId}`,
+                    `documentRequestByRequestId/${data?.requestId}`,
                     {
                         headers: {
                             Accept: 'application/json',

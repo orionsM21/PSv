@@ -44,21 +44,21 @@ const { width, height } = Dimensions.get('window');
    ============================================================ */
 const ExceptionAPI = {
   getAllExceptionType: async (token) => {
-    const res = await apiClient.get(`${BASE_URL}getAllExceptionType`, {
+    const res = await apiClient.get(`getAllExceptionType`, {
       headers: { Accept: 'application/json', 'Content-Type': 'application/json', Authorization: `Bearer ${token}` },
     });
     return res.data?.data || [];
   },
 
   getRaisedExceptionsByLoan: async (loanAccountNumber, token) => {
-    const res = await apiClient.get(`${BASE_URL}getRaiseExceptionLoanAccountNumber/${loanAccountNumber}`, {
+    const res = await apiClient.get(`getRaiseExceptionLoanAccountNumber/${loanAccountNumber}`, {
       headers: { Accept: 'application/json', 'Content-Type': 'application/json', Authorization: `Bearer ${token}` },
     });
     return res.data?.data || [];
   },
 
   createRaiseException: async (payload, token) => {
-    const res = await apiClient.post(`${BASE_URL}createRaiseException`, payload, {
+    const res = await apiClient.post(`createRaiseException`, payload, {
       headers: { Accept: 'application/json', 'Content-Type': 'application/json', Authorization: `Bearer ${token}` },
     });
     return res.data;
@@ -111,14 +111,14 @@ const ExceptionAPI = {
 
 
   updateMyCase: async (url, userId, loanAccountNumber, token) => {
-    const res = await apiClient.put(`${BASE_URL}${url}/${userId}/${loanAccountNumber}`, {}, {
+    const res = await apiClient.put(`${url}/${userId}/${loanAccountNumber}`, {}, {
       headers: { Accept: 'application/json', 'Content-Type': 'application/json', Authorization: `Bearer ${token}` },
     });
     return res.data;
   },
 
   addUserTracker: async (payload, token) => {
-    const res = await apiClient.post(`${BASE_URL}addUserTracker`, payload, {
+    const res = await apiClient.post(`addUserTracker`, payload, {
       headers: { Accept: 'application/json', 'Content-Type': 'application/json', Authorization: `Bearer ${token}` },
     });
     return res.data;

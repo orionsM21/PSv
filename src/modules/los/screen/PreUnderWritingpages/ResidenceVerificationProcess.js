@@ -721,7 +721,7 @@ const ResidenceVerificationProcess = ({ route }) => {
   //   // }
   //   try {
   //     const response = await axios.get(
-  //       `${BASE_URL}getResidenceVerificationByApplicantId/${userid}`,
+  //       `getResidenceVerificationByApplicantId/${userid}`,
   //       {
   //         headers: {
   //           Accept: 'application/json',
@@ -2150,7 +2150,7 @@ const ResidenceVerificationProcess = ({ route }) => {
             try {
               const response = await RNFetchBlob.fetch(
                 'POST',
-                `${BASE_URL}uploadFile/${applicantidApplicant}`,
+                `uploadFile/${applicantidApplicant}`,
                 {
                   'Content-Type': 'multipart/form-data',
                 },

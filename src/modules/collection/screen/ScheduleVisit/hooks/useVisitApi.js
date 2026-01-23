@@ -39,7 +39,7 @@ export default function useVisitApi(reduxData, loanAccountNumber) {
     const fetchNames = useCallback(async () => {
         try {
             const res = await apiClient.get(
-                `${BASE_URL}getNameForVisit/${loanAccountNumber}`,
+                `getNameForVisit/${loanAccountNumber}`,
                 authHeader
             );
 
@@ -58,7 +58,7 @@ export default function useVisitApi(reduxData, loanAccountNumber) {
     const fetchAddressTypes = useCallback(async (applicantType) => {
         try {
             const res = await apiClient.get(
-                `${BASE_URL}addressTypes/${applicantType}`,
+                `addressTypes/${applicantType}`,
                 authHeader
             );
 
@@ -82,7 +82,7 @@ export default function useVisitApi(reduxData, loanAccountNumber) {
         async (addressType, applicantType) => {
             try {
                 const res = await apiClient.get(
-                    `${BASE_URL}visitAddresses/${addressType}/${applicantType}/${loanAccountNumber}`,
+                    `visitAddresses/${addressType}/${applicantType}/${loanAccountNumber}`,
                     authHeader
                 );
 
@@ -102,7 +102,7 @@ export default function useVisitApi(reduxData, loanAccountNumber) {
     // -------------------------------
     const fetchOutcomeTypes = useCallback(async () => {
         try {
-            const res = await apiClient.get(`${BASE_URL}getAllActiveOutcomeType`, authHeader);
+            const res = await apiClient.get(`getAllActiveOutcomeType`, authHeader);
             const list = res?.data?.data || [];
             setOutcomeTypes(list);
             return list;
@@ -118,19 +118,19 @@ export default function useVisitApi(reduxData, loanAccountNumber) {
     const fetchVisitHistory = useCallback(async () => {
         try {
             const dailyRes = await apiClient.get(
-                `${BASE_URL}getVisitsByType/0/${userProfile?.userId}/${loanAccountNumber}?reportType=daily`,
+                `getVisitsByType/0/${userProfile?.userId}/${loanAccountNumber}?reportType=daily`,
                 authHeader
             );
             setDaily(dailyRes?.data?.data || []);
 
             const monthlyRes = await apiClient.get(
-                `${BASE_URL}getVisitsByType/0/${userProfile?.userId}/${loanAccountNumber}?reportType=monthly`,
+                `getVisitsByType/0/${userProfile?.userId}/${loanAccountNumber}?reportType=monthly`,
                 authHeader
             );
             setMonthly(monthlyRes?.data?.data || []);
 
             const yearlyRes = await apiClient.get(
-                `${BASE_URL}getVisitsByType/0/${userProfile?.userId}/${loanAccountNumber}?reportType=yearly`,
+                `getVisitsByType/0/${userProfile?.userId}/${loanAccountNumber}?reportType=yearly`,
                 authHeader
             );
             setYearly(yearlyRes?.data?.data || []);
@@ -145,7 +145,7 @@ export default function useVisitApi(reduxData, loanAccountNumber) {
     const addVisit = useCallback(
         async (payload) => {
             try {
-                const res = await apiClient.post(`${BASE_URL}addVisit`, payload, authHeader);
+                const res = await apiClient.post(`addVisit`, payload, authHeader);
                 return res?.data?.data;
             } catch (err) {
                 console.log("Add Visit Error:", err);
@@ -162,7 +162,7 @@ export default function useVisitApi(reduxData, loanAccountNumber) {
         async (visitId, payload) => {
             try {
                 const res = await apiClient.put(
-                    `${BASE_URL}updateVisit/${visitId}`,
+                    `updateVisit/${visitId}`,
                     payload,
                     authHeader
                 );
@@ -182,7 +182,7 @@ export default function useVisitApi(reduxData, loanAccountNumber) {
         async (trackerPayload) => {
             try {
                 const res = await apiClient.post(
-                    `${BASE_URL}addUserTracker`,
+                    `addUserTracker`,
                     trackerPayload,
                     authHeader
                 );

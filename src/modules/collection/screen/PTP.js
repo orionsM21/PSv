@@ -446,7 +446,7 @@ const PTP = () => {
         };
 
         // 3. CALL API
-        const response = await apiClient.post(`${BASE_URL}addUserTracker`, payload, {
+        const response = await apiClient.post(`addUserTracker`, payload, {
           headers: {
             Accept: "application/json",
             "Content-Type": "application/json",
@@ -574,7 +574,7 @@ const PTP = () => {
             : "updateMyCaseForInProcess";
 
     await apiClient.put(
-      `${BASE_URL}${url}/${userProfile.userId}/${loanAccountNumber}`,
+      `${url}/${userProfile.userId}/${loanAccountNumber}`,
       {},
       {
         headers: {
@@ -643,7 +643,7 @@ const PTP = () => {
     });
     console.log(payload, 'payloadpayload')
     try {
-      const response = await apiClient.post(`${BASE_URL}addPtpDetails`, payload, {
+      const response = await apiClient.post(`addPtpDetails`, payload, {
         headers: {
           Accept: "application/json",
           "Content-Type": "application/json",
@@ -687,7 +687,7 @@ const PTP = () => {
     });
 
     try {
-      await apiClient.put(`${BASE_URL}updatePtpDetails/${ptpid}`, payload, {
+      await apiClient.put(`updatePtpDetails/${ptpid}`, payload, {
         headers: {
           Accept: "application/json",
           "Content-Type": "application/json",
@@ -817,7 +817,7 @@ const PTP = () => {
   const getAllPTP = useCallback(async () => {
     try {
       const response = await apiClient.get(
-        `${BASE_URL}getAllPtpDetailsByLoanAccountNumber/${data.loanAccountNumber}`,
+        `getAllPtpDetailsByLoanAccountNumber/${data.loanAccountNumber}`,
         {
           headers: {
             Accept: "application/json",

@@ -43,21 +43,21 @@ const { width, height } = Dimensions.get("window");
    =========================== */
 const RequestAPI = {
   getAllRequestTypes: async (token) => {
-    const res = await apiClient.get(`${BASE_URL}getAllRequestType`, {
+    const res = await apiClient.get(`getAllRequestType`, {
       headers: { Accept: "application/json", "Content-Type": "application/json", Authorization: `Bearer ${token}` },
     });
     return res.data?.data || [];
   },
 
   getByLoanRequests: async (loanAccountNumber, token) => {
-    const res = await apiClient.get(`${BASE_URL}getByRequestLoanAccountNumber/${loanAccountNumber}`, {
+    const res = await apiClient.get(`getByRequestLoanAccountNumber/${loanAccountNumber}`, {
       headers: { Accept: "application/json", "Content-Type": "application/json", Authorization: `Bearer ${token}` },
     });
     return res.data?.data || [];
   },
 
   createRequest: async (payload, token) => {
-    const res = await apiClient.post(`${BASE_URL}createRequest`, payload, {
+    const res = await apiClient.post(`createRequest`, payload, {
       headers: { Accept: "application/json", "Content-Type": "application/json", Authorization: `Bearer ${token}` },
     });
     return res.data;
@@ -110,14 +110,14 @@ const RequestAPI = {
   },
 
   updateMyCase: async (url, userId, loanAccountNumber, token) => {
-    const res = await apiClient.put(`${BASE_URL}${url}/${userId}/${loanAccountNumber}`, {}, {
+    const res = await apiClient.put(`${url}/${userId}/${loanAccountNumber}`, {}, {
       headers: { Accept: "application/json", "Content-Type": "application/json", Authorization: `Bearer ${token}` },
     });
     return res.data;
   },
 
   addUserTracker: async (payload, token) => {
-    const res = await apiClient.post(`${BASE_URL}addUserTracker`, payload, {
+    const res = await apiClient.post(`addUserTracker`, payload, {
       headers: { Accept: "application/json", "Content-Type": "application/json", Authorization: `Bearer ${token}` },
     });
     return res.data;

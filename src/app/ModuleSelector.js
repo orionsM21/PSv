@@ -47,6 +47,22 @@ const MODULES = [
     icon: 'wallet-outline',
     gradient: ['rgba(170, 71, 188, 0.53)', 'rgba(105, 27, 154, 0.69)'],
   },
+  // ✅ NEW MODULE
+  {
+    id: 'payment',
+    title: 'Payment',
+    subtitle: 'EMI & loan payments',
+    icon: 'card-outline',
+    gradient: ['rgba(244, 67, 54, 0.75)', 'rgba(211, 47, 47, 0.8)'],
+  },
+
+   {
+    id: 'chat',
+    title: 'Chat',
+    subtitle: 'WhatsApp & Commnication',
+    icon: 'card-outline',
+    gradient: ['rgba(98, 244, 54, 0.75)', 'rgba(112, 189, 97, 0.8)'],
+  },
 ];
 
 const ROLE_OPTIONS = [
@@ -56,8 +72,8 @@ const ROLE_OPTIONS = [
 ];
 
 const MODULE_PERMISSION = {
-  ADMIN: ['gold', 'vehicle', 'los', 'collection'],
-  LOAN_OFFICER: ['gold', 'vehicle', 'los'],
+  ADMIN: ['gold', 'vehicle', 'los', 'collection', 'payment'],
+  LOAN_OFFICER: ['gold', 'vehicle', 'los','chat'],
   COLLECTION_AGENT: ['collection'],
 };
 
@@ -77,12 +93,14 @@ export default function ModuleSelector() {
   const [focus, setFocus] = useState(false);
   const [loading, setloading] = useState(false);
   const allowedModules = useMemo(() => {
-    if (!role) return [];
+    if (!role || !MODULE_PERMISSION[role]) return [];
+
     return MODULES.filter(m =>
-      MODULE_PERMISSION[role]?.includes(m.id)
+      MODULE_PERMISSION[role].includes(m.id)
     );
   }, [role]);
-  console.log(allowedModules, 'allowedModulesallowedModules')
+
+  console.log(allowedModules, role, MODULES, 'allowedModulesallowedModules')
   const handleSelectModule = useCallback(
     (moduleId) => {
       if (!moduleId) return; // 🛡️ safety
@@ -170,6 +188,8 @@ export default function ModuleSelector() {
           onFocus={() => setFocus(true)}
           onBlur={() => setFocus(false)}
           onChange={(item) => {
+            console.log('Selected Org', item)
+
             setRole(item.value);
             setFocus(false);
           }}

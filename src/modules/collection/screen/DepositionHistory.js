@@ -131,7 +131,7 @@ const DepositionHistory = () => {
         if (!id) return;
         try {
             // dispatch(showLoader(true));
-            const res = await apiClient.get(`${BASE_URL}getDepositionHistory/${id}`, {
+            const res = await apiClient.get(`getDepositionHistory/${id}`, {
                 headers: {
                     Accept: 'application/json',
                     'Content-Type': 'application/json', Authorization: `Bearer ${token}`
@@ -155,7 +155,7 @@ const DepositionHistory = () => {
         try {
             // dispatch(showLoader(true));
             const res = await apiClient.get(
-                `${BASE_URL}getDepositionHistory/${id}/${statusValue.label}?from=${from}&to=${to}`,
+                `getDepositionHistory/${id}/${statusValue.label}?from=${from}&to=${to}`,
                 {
                     headers: {
                         Accept: 'application/json',

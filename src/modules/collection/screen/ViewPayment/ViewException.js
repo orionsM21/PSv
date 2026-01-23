@@ -68,7 +68,7 @@ const ViewException = () => {
             if (!data?.raiseExceptionId) return;
 
             const res = await apiClient.get(
-                `${BASE_URL}getdocumentRaiseExceptionByRaiseExceptionId/${data.raiseExceptionId}`,
+                `getdocumentRaiseExceptionByRaiseExceptionId/${data.raiseExceptionId}`,
                 {
                     headers: {
                         Accept: "application/json",

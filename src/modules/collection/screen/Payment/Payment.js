@@ -101,7 +101,7 @@ const Payment = () => {
         return;
       }
       const resp = await apiClient.get(
-        `${BASE_URL}getAllPaymentByLoanAccountNumber/${data.loanAccountNumber}`,
+        `getAllPaymentByLoanAccountNumber/${data.loanAccountNumber}`,
         { headers: { Authorization: `Bearer ${token}` } }
       );
       setHistory(resp?.data?.data || []);
@@ -443,7 +443,7 @@ const Payment = () => {
       // -----------------------------
       // 5) CALL addPayment
       // -----------------------------
-      const resp = await apiClient.post(`${BASE_URL}addPayment`, payload, {
+      const resp = await apiClient.post(`addPayment`, payload, {
         headers: {
           Accept: "application/json",
           "Content-Type": "application/json",
@@ -478,7 +478,7 @@ const Payment = () => {
               : "updateMyCaseForInProcess";
 
       await apiClient.put(
-        `${BASE_URL}${url}/${userProfile?.userId}/${data?.loanAccountNumber}`,
+        `${url}/${userProfile?.userId}/${data?.loanAccountNumber}`,
         {},
         {
           headers: {
@@ -508,7 +508,7 @@ const Payment = () => {
         isDocument: form.evidence ? "yes" : "No",
       };
 
-      const reqResp = await apiClient.post(`${BASE_URL}addRequestManagement`, reqPayload, {
+      const reqResp = await apiClient.post(`addRequestManagement`, reqPayload, {
         headers: { Authorization: `Bearer ${token}` },
       });
 

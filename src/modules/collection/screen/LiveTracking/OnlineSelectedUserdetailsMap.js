@@ -144,7 +144,7 @@ const OnlineSelectedUserdetailsMap = ({ route }) => {
     };
 
     try {
-      const response = await apiClient.post(`${BASE_URL}mapDataByUserId`, payload, {
+      const response = await apiClient.post(`mapDataByUserId`, payload, {
         headers: {
           Accept: 'application/json',
           'Content-Type': 'application/json',

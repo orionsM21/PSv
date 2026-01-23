@@ -868,7 +868,7 @@ const Dashboard = () => {
       };
 
       // Send to backend
-      const response = await apiClient.post(`${BASE_URL}addUserTracker`, payload, {
+      const response = await apiClient.post(`addUserTracker`, payload, {
         headers: {
           Accept: 'application/json',
           'Content-Type': 'application/json',
@@ -931,7 +931,7 @@ const Dashboard = () => {
       };
 
       // API call to add user tracker
-      const response = await apiClient.post(`${BASE_URL}addUserTracker`, payload, {
+      const response = await apiClient.post(`addUserTracker`, payload, {
         headers: {
           Accept: 'application/json',
           'Content-Type': 'application/json',
@@ -972,7 +972,7 @@ const Dashboard = () => {
 
   const liveTrackerAdminConfig = async () => {
     try {
-      const response = await apiClient.get(`${BASE_URL}getTrackingConfig`, {
+      const response = await apiClient.get(`getTrackingConfig`, {
         headers: {
           Accept: 'application/json',
           'Content-Type': 'application/json',
@@ -1007,7 +1007,7 @@ const Dashboard = () => {
 
   const liveTrackerAdminConfigForfirstTime = async () => {
     try {
-      const response = await apiClient.get(`${BASE_URL}getTrackingConfig`, {
+      const response = await apiClient.get(`getTrackingConfig`, {
         headers: {
           Accept: 'application/json',
           'Content-Type': 'application/json',
@@ -1078,7 +1078,7 @@ const Dashboard = () => {
 
   const getLenderListData = async () => {
     try {
-      const response = await apiClient.get(`${BASE_URL}getLenderList`, {
+      const response = await apiClient.get(`getLenderList`, {
         headers: {
           Accept: 'application/json',
           'Content-Type': 'application/json',
@@ -1101,7 +1101,7 @@ const Dashboard = () => {
     if (!userId) return;
 
     try {
-      const response = await apiClient.get(`${BASE_URL}getMobileGraphData/${userId}`, {
+      const response = await apiClient.get(`getMobileGraphData/${userId}`, {
         headers: {
           Accept: 'application/json',
           'Content-Type': 'application/json',
@@ -1123,7 +1123,7 @@ const Dashboard = () => {
   const getVisitHistory = async () => {
     try {
       const response = await apiClient.get(
-        `${BASE_URL}getVisitsByType/0/${userProfile?.userId}?reportType=daily`,
+        `getVisitsByType/0/${userProfile?.userId}?reportType=daily`,
         {
           headers: {
             Accept: 'application/json',
@@ -1170,7 +1170,7 @@ const Dashboard = () => {
     const endpoint = urlMap[matchedRole] || urlMap.DEFAULT;
 
     try {
-      const response = await apiClient.get(`${BASE_URL}${endpoint}/${userId}/${roleCodes}`, {
+      const response = await apiClient.get(`${endpoint}/${userId}/${roleCodes}`, {
         headers: {
           Accept: 'application/json',
           'Content-Type': 'application/json',
@@ -1202,7 +1202,7 @@ const Dashboard = () => {
 
     try {
       const response = await apiClient.post(
-        `${BASE_URL}getMobileDashboardCount`,
+        `getMobileDashboardCount`,
         payload,
         {
           headers: {
@@ -1241,7 +1241,7 @@ const Dashboard = () => {
       };
 
       const response = await apiClient.post(
-        `${BASE_URL}followupRedirect`,
+        `followupRedirect`,
         payload,
         {
           headers: {
@@ -1280,7 +1280,7 @@ const Dashboard = () => {
       };
 
       const response = await apiClient.post(
-        `${BASE_URL}ptpCountRedirect`,
+        `ptpCountRedirect`,
         payload,
         {
           headers: {
@@ -1315,7 +1315,7 @@ const Dashboard = () => {
       };
 
       const response = await apiClient.post(
-        `${BASE_URL}getPendingScheduleVisitRedirect`,
+        `getPendingScheduleVisitRedirect`,
         payload,
         {
           headers: {
@@ -1341,7 +1341,7 @@ const Dashboard = () => {
     try {
 
 
-      const url = `${BASE_URL}getDepositionSummeryByUserId/${userProfile?.userId}`;
+      const url = `getDepositionSummeryByUserId/${userProfile?.userId}`;
       const headers = {
         Accept: 'application/json',
         'Content-Type': 'application/json',
@@ -1371,7 +1371,7 @@ const Dashboard = () => {
 
       const fetchData = async (url, params) => {
         // Log URL for debugging
-        const response = await apiClient.get(`${BASE_URL}${url}/${params}`, {
+        const response = await apiClient.get(`${url}/${params}`, {
           headers: {
             Accept: 'application/json',
             'Content-Type': 'application/json',
@@ -1383,7 +1383,7 @@ const Dashboard = () => {
         const allLan = allData.map(val => val.allLan);
 
         const bulkUploadResponse = await apiClient.post(
-          `${BASE_URL}getBulkUploadSuccessByListOfLan/${userProfile?.userId
+          `getBulkUploadSuccessByListOfLan/${userProfile?.userId
           }`,
           allLan,
           {
@@ -1450,7 +1450,7 @@ const Dashboard = () => {
       // 
 
       const response = await apiClient.post(
-        `${BASE_URL}getPendingScheduleVisitRedirect`,
+        `getPendingScheduleVisitRedirect`,
         payload,
         {
           headers: {
@@ -1479,7 +1479,7 @@ const Dashboard = () => {
         if (roleCode?.includes('DRA')) {
           apiClient
             .get(
-              `${BASE_URL}getDRACaseAllocationByUseridUnAllocatedApproved/${userProfile?.userId}/${roleCode}/0/0`,
+              `getDRACaseAllocationByUseridUnAllocatedApproved/${userProfile?.userId}/${roleCode}/0/0`,
               {
                 headers: {
                   Accept: 'application/json',
@@ -1498,7 +1498,7 @@ const Dashboard = () => {
                 apiClient
 
                   .post(
-                    `${BASE_URL}getBulkUploadSuccessByListOfLan/${userProfile?.userId || userProfile.id
+                    `getBulkUploadSuccessByListOfLan/${userProfile?.userId || userProfile.id
                     }`,
                     allLan,
                     {
@@ -1526,7 +1526,7 @@ const Dashboard = () => {
           if (FiledORCallvalues === true || userProfile?.activityType === 'Field') {
             apiClient
               .get(
-                `${BASE_URL}getDRACaseAllocationByUseridUnAllocatedApproved/${userProfile?.userId}/${roleCode}/0/0`,
+                `getDRACaseAllocationByUseridUnAllocatedApproved/${userProfile?.userId}/${roleCode}/0/0`,
                 {
                   headers: {
                     Accept: 'application/json',
@@ -1544,7 +1544,7 @@ const Dashboard = () => {
                   });
                   apiClient
                     .post(
-                      `${BASE_URL}getBulkUploadSuccessByListOfLan/${userProfile?.userId
+                      `getBulkUploadSuccessByListOfLan/${userProfile?.userId
                       }`,
                       allLan,
                       {
@@ -1571,7 +1571,7 @@ const Dashboard = () => {
           } else {
             apiClient
               .get(
-                `${BASE_URL}getCACaseAllocationByUseridUnAllocatedApproved/${userProfile?.userId}/${roleCode}/0/0`,
+                `getCACaseAllocationByUseridUnAllocatedApproved/${userProfile?.userId}/${roleCode}/0/0`,
                 {
                   headers: {
                     Accept: 'application/json',
@@ -1590,7 +1590,7 @@ const Dashboard = () => {
                   apiClient
 
                     .post(
-                      `${BASE_URL}getBulkUploadSuccessByListOfLan/${userProfile?.userId
+                      `getBulkUploadSuccessByListOfLan/${userProfile?.userId
                       }`,
                       allLan,
                       {
@@ -1618,8 +1618,8 @@ const Dashboard = () => {
         } else {
           const url =
             FiledORCallvalues === true || userProfile?.activityType === 'Field'
-              ? `${BASE_URL}getCaseAllocationByUseridForUnAllocatedCasesForUnAllocationApprovedField`
-              : `${BASE_URL}getCaseAllocationByUseridForUnAllocatedCasesForUnAllocationApproved`;
+              ? `getCaseAllocationByUseridForUnAllocatedCasesForUnAllocationApprovedField`
+              : `getCaseAllocationByUseridForUnAllocatedCasesForUnAllocationApproved`;
 
           apiClient
             .get(`${url}/${userProfile?.userId}/0/0`, {
@@ -1639,7 +1639,7 @@ const Dashboard = () => {
                 apiClient
 
                   .post(
-                    `${BASE_URL}getBulkUploadSuccessByListOfLan/${userProfile?.userId
+                    `getBulkUploadSuccessByListOfLan/${userProfile?.userId
                     }`,
                     allLan,
                     {
@@ -1675,7 +1675,7 @@ const Dashboard = () => {
 
     try {
       const response = await apiClient.get(
-        `${BASE_URL}getDepositionHistory/${userProfile?.userId}`,
+        `getDepositionHistory/${userProfile?.userId}`,
         {
           headers: {
             Accept: 'application/json',

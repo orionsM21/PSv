@@ -181,7 +181,7 @@ export default function Allocation() {
       const matchedRole = roleCodes.find((r) => roleUrlMap[r]);
       const url = matchedRole ? roleUrlMap[matchedRole] : defaultUrl;
 
-      const response = await apiClient.get(`${BASE_URL}${url}/${userProfile?.userId}/${roleCodes.join(',')}`, {
+      const response = await apiClient.get(`${url}/${userProfile?.userId}/${roleCodes.join(',')}`, {
         headers: { Accept: 'application/json', 'Content-Type': 'application/json', Authorization: `Bearer ${token}` },
       });
 
@@ -221,7 +221,7 @@ export default function Allocation() {
 
   const apiFetch = async (url, setter, transform = (d) => d) => {
     try {
-      const res = await apiClient.get(`${BASE_URL}${url}`, {
+      const res = await apiClient.get(`${url}`, {
         headers: {
           Accept: "application/json",
           "Content-Type": "application/json",
@@ -435,7 +435,7 @@ export default function Allocation() {
         ? "getCaseAllocationByUseridForUnAllocatedCasesField"
         : "getCaseAllocationByUseridForUnAllocatedCases";
 
-      const res = await apiClient.get(`${BASE_URL}${url}/${userProfile.userId}/0/0`, { headers });
+      const res = await apiClient.get(`${url}/${userProfile.userId}/0/0`, { headers });
 
       const raw = res?.data?.response || [];
       const lanList = raw.map(r => r.allLan).filter(Boolean);
@@ -453,7 +453,7 @@ export default function Allocation() {
       const isMIS = roleCodes.includes("MIS");
 
       if (isMIS) {
-        const res = await apiClient.get(`${BASE_URL}getAllNewSuccessData/${userProfile.userId}/0`, { headers });
+        const res = await apiClient.get(`getAllNewSuccessData/${userProfile.userId}/0`, { headers });
         const raw = res?.data?.response || [];
         const lanList = raw.map(r => r.allLan).filter(Boolean);
 
@@ -465,7 +465,7 @@ export default function Allocation() {
         ? "getNewCaseAllocationFieldByUserid"
         : "getNewCaseAllocationByUserid";
 
-      const res = await apiClient.get(`${BASE_URL}${path}/${userProfile.userId}/0/0`, { headers });
+      const res = await apiClient.get(`${path}/${userProfile.userId}/0/0`, { headers });
 
       const raw = res?.data?.response || [];
       const lanList = raw.map(r => r.allLan).filter(Boolean);
@@ -488,7 +488,7 @@ export default function Allocation() {
           ? "getMyCaseAllocationFieldByUserid"
           : "getMyCaseAllocationByUserid";
 
-        const res = await apiClient.get(`${BASE_URL}${url}/${userProfile.userId}/0/0`, { headers });
+        const res = await apiClient.get(`${url}/${userProfile.userId}/0/0`, { headers });
 
         const raw = res?.data?.response || [];
         const lanList = raw.map(r => r.allLan).filter(Boolean);
@@ -506,7 +506,7 @@ export default function Allocation() {
 
       if (!url) return [];
 
-      const res = await apiClient.get(`${BASE_URL}${url}/${userProfile.userId}/${roleCodes}/0/0`, { headers });
+      const res = await apiClient.get(`${url}/${userProfile.userId}/${roleCodes}/0/0`, { headers });
 
       const raw = res?.data?.response || [];
       const lanList = raw.map(r => r.allLan).filter(Boolean);
@@ -535,7 +535,7 @@ export default function Allocation() {
         url = isField ? "getMyInProcessByUseridField" : "getMyInProcessByUserid";
       }
 
-      const res = await apiClient.get(`${BASE_URL}${url}/${userProfile.userId}/0/0`, { headers });
+      const res = await apiClient.get(`${url}/${userProfile.userId}/0/0`, { headers });
 
       const raw = res?.data?.response || [];
       const lanList = raw.map(r => r.allLan).filter(Boolean);
@@ -559,7 +559,7 @@ export default function Allocation() {
         ? "getAllocatedCaseAllocationFieldByUserid"
         : "getAllocatedCaseAllocationByUserid";
 
-      const res = await apiClient.get(`${BASE_URL}${url}/${userProfile.userId}/0/0`, { headers });
+      const res = await apiClient.get(`${url}/${userProfile.userId}/0/0`, { headers });
 
       const raw = res?.data?.response || [];
       const lanList = raw.map(r => r.allLan).filter(Boolean);
@@ -595,7 +595,7 @@ export default function Allocation() {
         params = `${userProfile.userId}/0/0`;
       }
 
-      const res = await apiClient.get(`${BASE_URL}${url}/${params}`, { headers });
+      const res = await apiClient.get(`${url}/${params}`, { headers });
 
       const raw = res?.data?.response || [];
       const lanList = raw.map(r => r.allLan).filter(Boolean);
@@ -631,7 +631,7 @@ export default function Allocation() {
         params = `${userProfile.userId}/0/0`;
       }
 
-      const res = await apiClient.get(`${BASE_URL}${url}/${params}`, { headers });
+      const res = await apiClient.get(`${url}/${params}`, { headers });
 
       const raw = res?.data?.response || [];
       const lanList = raw.map(r => r.allLan).filter(Boolean);
@@ -663,7 +663,7 @@ export default function Allocation() {
           : `getCaseAllocationByUseridForUnAllocationApproved/${userProfile.userId}/0/0`;
       }
 
-      const res = await apiClient.get(`${BASE_URL}${url}`, { headers });
+      const res = await apiClient.get(`${url}`, { headers });
 
       const raw = res?.data?.response || [];
       const lanList = raw.map(r => r.allLan).filter(Boolean);
@@ -692,7 +692,7 @@ export default function Allocation() {
         url = isField ? "getCaseAllocationForCloserField" : "getCaseAllocationForCloser";
       }
 
-      const res = await apiClient.get(`${BASE_URL}${url}/${userProfile.userId}/0/0`, { headers });
+      const res = await apiClient.get(`${url}/${userProfile.userId}/0/0`, { headers });
 
       const raw = res?.data?.response || [];
       const lanList = raw.map(r => r.allLan).filter(Boolean);
@@ -712,7 +712,7 @@ export default function Allocation() {
         ? "getCaseAllocationSettlementField"
         : "getCaseAllocationSettlement";
 
-      const res = await apiClient.get(`${BASE_URL}${url}/${userProfile.userId}/0/0`, { headers });
+      const res = await apiClient.get(`${url}/${userProfile.userId}/0/0`, { headers });
 
       const raw = res?.data?.response || [];
       const lanList = raw.map(r => r.allLan).filter(Boolean);
@@ -753,7 +753,7 @@ export default function Allocation() {
             ? "getAllocatedSuccessDataField/0/0"
             : "getAllocatedSuccessData/0/0";
 
-          const res = await apiClient.get(`${BASE_URL}${url}`, { headers });
+          const res = await apiClient.get(`${url}`, { headers });
           return res?.data?.data || [];
         }
 
@@ -762,7 +762,7 @@ export default function Allocation() {
         ----------------------------------------------------------- */
         if (tab === "CaseClosure(Approved)") {
           const res = await apiClient.get(
-            `${BASE_URL}getCaseClosureByTab/${userProfile.userId}/Approved?1?50`,
+            `getCaseClosureByTab/${userProfile.userId}/Approved?1?50`,
             { headers }
           );
           return res?.data?.data?.content || [];
@@ -770,7 +770,7 @@ export default function Allocation() {
 
         if (tab === "CaseClosure(Pending)") {
           const res = await apiClient.get(
-            `${BASE_URL}getCaseClosureByTab/${userProfile.userId}/Pending?1?50`,
+            `getCaseClosureByTab/${userProfile.userId}/Pending?1?50`,
             { headers }
           );
           return res?.data?.data?.content || [];
@@ -778,7 +778,7 @@ export default function Allocation() {
 
         if (tab === "CaseClosure(Rejected)") {
           const res = await apiClient.get(
-            `${BASE_URL}getCaseClosureByTab/${userProfile.userId}/Rejected?1?50`,
+            `getCaseClosureByTab/${userProfile.userId}/Rejected?1?50`,
             { headers }
           );
           return res?.data?.data?.content || [];
@@ -799,7 +799,7 @@ export default function Allocation() {
 
         // Page-based slicing handled by your hook — lanBatch already correct
         const res = await apiClient.post(
-          `${BASE_URL}getBulkUploadSuccessByListOfLan/${userProfile.userId}`,
+          `getBulkUploadSuccessByListOfLan/${userProfile.userId}`,
           lanBatch,
           { headers }
         );
@@ -974,7 +974,7 @@ export default function Allocation() {
         : { borrowerName: searchinputTxt.trim(), caseStatus: reqType, paymentStatus: "NA", callStatus: "NA" };
 
       // FIRST API → GET LAN LIST
-      const { data: res1 } = await apiClient.post(`${BASE_URL}${urlPath}`, finalPayload, {
+      const { data: res1 } = await apiClient.post(`${urlPath}`, finalPayload, {
         headers: {
           Authorization: `Bearer ${token}`, Accept: "application/json",
           "Content-Type": "application/json",
@@ -990,7 +990,7 @@ export default function Allocation() {
       if (lanList.length) {
         // SECOND API → BULK FETCH
         const { data: res2 } = await apiClient.post(
-          `${BASE_URL}getBulkUploadSuccessByListOfLan/${userId}`,
+          `getBulkUploadSuccessByListOfLan/${userId}`,
           lanList,
           {
             headers: {
@@ -1341,7 +1341,7 @@ export default function Allocation() {
       const currentRoles = Roles[0]
       const url = getEndpoint(tabToSearch, userProfile, currentRoles, userProfile.userId);
       console.log(url, currentRoles, 'urlurl')
-      const res1 = await apiClient.post(`${BASE_URL}${url}`, payload, {
+      const res1 = await apiClient.post(`${url}`, payload, {
         headers: {
           Authorization: `Bearer ${token}`, Accept: "application/json",
           "Content-Type": "application/json",
@@ -1354,7 +1354,7 @@ export default function Allocation() {
       let bulkData = [];
       if (lanList.length) {
         const res2 = await apiClient.post(
-          `${BASE_URL}getBulkUploadSuccessByListOfLan/${userProfile.userId}`,
+          `getBulkUploadSuccessByListOfLan/${userProfile.userId}`,
           lanList,
           {
             headers: {

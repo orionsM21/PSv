@@ -1071,7 +1071,7 @@ const RCUProcess = ({ route }) => {
         try {
             const response = await RNFetchBlob.fetch(
                 'POST',
-                `${BASE_URL}addRiskContainmentUnit`,
+                `addRiskContainmentUnit`,
                 {
                     'Content-Type': 'multipart/form-data',
                     Authorization: 'Bearer ' + token,

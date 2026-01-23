@@ -127,7 +127,7 @@ export default function CollectionLogin({ onLogin }) {
       // const encryptedCredentials = encrypt(password);
 
       const tokenResponse = await apiClient.post(
-        `${BASE_URL}mobile/token?type=uid`,
+        `mobile/token?type=uid`,
         {
           // principal: encryptedPrincipal,
           // credentials: encryptedCredentials,
@@ -168,7 +168,7 @@ export default function CollectionLogin({ onLogin }) {
 
       // Fetch full profile
       const userResponse = await apiClient.get(
-        `${BASE_URL}getUserByUserNameForDashboard/${encodeURIComponent(userNameString)}`,
+        `getUserByUserNameForDashboard/${encodeURIComponent(userNameString)}`,
         {
           headers: {
             Accept: 'application/json',
@@ -205,7 +205,7 @@ export default function CollectionLogin({ onLogin }) {
 
       dispatch(saveUserProfile(userData));
       dispatch(saveRoleCode(roleCode));
-
+      console.log(userResponse?.data?.msgKey, '?.data?.msgKey')
       // Navigate on success
       if (userResponse?.data?.msgKey === 'Success') {
         dispatch(loginSuccess());

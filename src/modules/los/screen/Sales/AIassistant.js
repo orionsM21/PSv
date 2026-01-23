@@ -53,7 +53,7 @@ const AIassistant = () => {
 
         try {
             // Step 1: Fetch Leads
-            const leadsResponse = await axios.get(`${BASE_URL}getLeads`, {
+            const leadsResponse = await axios.get(`${BASE_URL}${BASE_URL}getLeads`, {
                 headers: {
                     Accept: 'application/json',
                     'Content-Type': 'application/json',
@@ -81,7 +81,7 @@ const AIassistant = () => {
             }
 
             // Step 2: Fetch Applications
-            const applicationsResponse = await axios.get(`${BASE_URL}getAllApplication`, {
+            const applicationsResponse = await axios.get(`${BASE_URL}${BASE_URL}getAllApplication`, {
                 headers: {
                     Accept: 'application/json',
                     'Content-Type': 'application/json',
@@ -134,7 +134,7 @@ const AIassistant = () => {
                 return;
             }
 
-            const { data } = await axios.get(`${BASE_URL}getAllLogsDetails`, {
+            const { data } = await axios.get(`${BASE_URL}${BASE_URL}getAllLogsDetails`, {
                 headers: {
                     Accept: 'application/json',
                     'Content-Type': 'application/json',

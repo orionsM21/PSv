@@ -33,7 +33,7 @@ const { height, width } = Dimensions.get('window');
  */
 const safeGet = async (url, headers = {}) => {
     try {
-        const res = await apiClient.get(`${BASE_URL}${url}`, { headers });
+        const res = await apiClient.get(`${url}`, { headers });
         return res?.data ?? null;
     } catch (e) {
         console.error(`safeGet ${url} error:`, e?.response ?? e);
@@ -120,7 +120,7 @@ const ViewDispute = () => {
                 user: { userId: reduxData.id },
             };
 
-            const res = await apiClient.post(`${BASE_URL}addPaymentInfo`, payload, {
+            const res = await apiClient.post(`addPaymentInfo`, payload, {
                 headers: {
                     Accept: 'application/json',
                     'Content-Type': 'application/json',

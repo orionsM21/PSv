@@ -147,7 +147,7 @@ export default function ContactCentreScreen() {
     // ----------------------
     const get = useCallback(
         async (url) => {
-            const res = await apiClient.get(`${BASE_URL}${url}`, { headers: authHeaders });
+            const res = await apiClient.get(`${url}`, { headers: authHeaders });
             return res?.data?.data ?? [];
         },
         [token]
@@ -158,7 +158,7 @@ export default function ContactCentreScreen() {
     // Attempt to find existing contact centre id for this LAN.
     const getExistingContactCentreId = useCallback(async () => {
         try {
-            const res = await apiClient.get(`${BASE_URL}getAllContactCentres`, { headers: authHeaders });
+            const res = await apiClient.get(`getAllContactCentres`, { headers: authHeaders });
             const list = res?.data?.data ?? [];
             const lan = String(data?.loanAccountNumber ?? "").trim();
 
@@ -205,7 +205,7 @@ export default function ContactCentreScreen() {
                 },
             };
 
-            const res = await apiClient.post(`${BASE_URL}addContactCentre`, payload, { headers: authHeaders });
+            const res = await apiClient.post(`addContactCentre`, payload, { headers: authHeaders });
             const newId = res?.data?.data?.contactCentreId;
             if (mountedRef.current && newId) {
                 setContactCentreId(newId);
@@ -346,7 +346,7 @@ export default function ContactCentreScreen() {
         if (!addType) return showError("Please select address type");
 
         await postDataAndRefresh(
-            `${BASE_URL}addContactCentreAddress`,
+            `addContactCentreAddress`,
             { address: add, addressType: addType.name || addType, contactCentre: contactCentreId },
             "Address added successfully"
         );
@@ -364,7 +364,7 @@ export default function ContactCentreScreen() {
         if (!phoneName) return showError("Please enter contact name");
 
         await postDataAndRefresh(
-            `${BASE_URL}addContactCentreMobileNumbers`,
+            `addContactCentreMobileNumbers`,
             { contactName: phoneName, contactNumber: phone, contactCentre: contactCentreId },
             "Phone number added successfully"
         );
@@ -379,7 +379,7 @@ export default function ContactCentreScreen() {
         if (!emailNew) return showError("Please enter email");
 
         await postDataAndRefresh(
-            `${BASE_URL}addContactCentreEmail`,
+            `addContactCentreEmail`,
             { emailAddress: emailNew, contactCentre: contactCentreId },
             "Email added successfully"
         );
@@ -396,7 +396,7 @@ export default function ContactCentreScreen() {
         if (!refAddress) return showError("Please enter address");
 
         await postDataAndRefresh(
-            `${BASE_URL}addContactCentreReference`,
+            `addContactCentreReference`,
             {
                 referenceAddress: refAddress,
                 referenceEmail: refEmail,

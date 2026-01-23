@@ -53,15 +53,15 @@ const AuthLogin = () => {
 
         if (!token || !userName || module !== 'collection') {
           dispatch(logout());
-          // navigation.navigate('CollectionLogin')
-          // return;
+          navigation.navigate('CollectionLogin')
+          return;
         }
 
         // dispatch(setModule('collection'));
 
         // 🔁 Always refetch profile (avoid stale data)
         const res = await apiClient.get(
-          `${BASE_URL}getUserByUserNameForDashboard/${encodeURIComponent(userName)}`,
+          `getUserByUserNameForDashboard/${encodeURIComponent(userName)}`,
           {
             headers: {
               Authorization: `Bearer ${token}`,
@@ -85,8 +85,8 @@ const AuthLogin = () => {
         dispatch(saveUserProfile(userProfile));
         dispatch(saveRoleCode(roleCode));
         dispatch(loginSuccess(roleCode));
-        // navigation.navigate('Dashboard')
-        dispatch(setUserHydrated()); // 🔑 LAST STEP
+        navigation.navigate('Dashboard')
+        // dispatch(setUserHydrated()); // 🔑 LAST STEP
       } catch (err) {
         console.warn('[COLLECTION AUTH] restore failed', err);
         // dispatch(logout());

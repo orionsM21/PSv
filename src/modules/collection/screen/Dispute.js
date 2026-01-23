@@ -51,7 +51,7 @@ const { width, height } = Dimensions.get('window');
    ----------------------------- */
 const api = {
   fetchDisputeReasons: async (token) => {
-    const res = await apiClient.get(`${BASE_URL}getAllDisputeReasonMaster`, {
+    const res = await apiClient.get(`getAllDisputeReasonMaster`, {
       headers: {
         Accept: 'application/json',
         'Content-Type': 'application/json',
@@ -63,7 +63,7 @@ const api = {
 
   fetchDisputesByLoan: async (loanAccountNumber, token) => {
     const res = await apiClient.get(
-      `${BASE_URL}getByDisputeOrRtpLoanAccountNumber/${loanAccountNumber}`,
+      `getByDisputeOrRtpLoanAccountNumber/${loanAccountNumber}`,
       {
         headers: {
           Accept: 'application/json',
@@ -76,7 +76,7 @@ const api = {
   },
 
   createDispute: async (payload, token) => {
-    const res = await apiClient.post(`${BASE_URL}createDisputeOrRtp`, payload, {
+    const res = await apiClient.post(`createDisputeOrRtp`, payload, {
       headers: {
         Accept: 'application/json',
         'Content-Type': 'application/json',
@@ -88,7 +88,7 @@ const api = {
 
   updateMyCase: async (url, userId, loanAccountNumber, token) => {
     const res = await apiClient.put(
-      `${BASE_URL}${url}/${userId}/${loanAccountNumber}`,
+      `${url}/${userId}/${loanAccountNumber}`,
       {},
       {
         headers: {
@@ -198,7 +198,7 @@ const api = {
 
 
   fetchDocument: async (documentId, token) => {
-    const res = await apiClient.get(`${BASE_URL}getdocumentDisputeByDisputeOrRtpId/${documentId}`, {
+    const res = await apiClient.get(`getdocumentDisputeByDisputeOrRtpId/${documentId}`, {
       headers: {
         Accept: 'application/json',
         'Content-Type': 'application/json',
@@ -209,7 +209,7 @@ const api = {
   },
 
   addUserTracker: async (payload, token) => {
-    const res = await apiClient.post(`${BASE_URL}addUserTracker`, payload, {
+    const res = await apiClient.post(`addUserTracker`, payload, {
       headers: {
         Accept: 'application/json',
         'Content-Type': 'application/json',

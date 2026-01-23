@@ -575,7 +575,7 @@ const EnquiryWorklist = () => {
         try {
             const userNamesParam = setselectedUsers.map(user => user.value).join(',');
             const tokenResponse = await axios.get(
-                `${BASE_URL}getFcmTokenByUserName?userNames=${userNamesParam}`,
+                `getFcmTokenByUserName?userNames=${userNamesParam}`,
                 {
                     headers: {
                         Accept: 'application/json',

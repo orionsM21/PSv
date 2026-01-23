@@ -1,5 +1,5 @@
 import 'react-native-get-random-values';
-import React from "react";
+import React, { useEffect } from "react";
 import { StatusBar } from "react-native";
 import { NavigationContainer } from "@react-navigation/native";
 import { Provider } from "react-redux";
@@ -10,8 +10,13 @@ import AppNavigator from "./src/app/AppNavigator";
 import DrawerRoot from "./src/Drawer/DrawerRoot";
 import { DrawerProvider } from "./src/Drawer/DrawerContext";
 import store from "./src/redux/store";
+import { syncRemoteConfig } from './src/modules/collection/service/syncRemoteConfig';
 
 export default function App() {
+  // useEffect(() => {
+  //   syncRemoteConfig(); // 🔥 fetch latest BASE_URL on app start
+  // }, []);
+
   return (
     <SafeAreaProvider>
       <Provider store={store}>

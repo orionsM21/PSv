@@ -139,7 +139,7 @@ export default function useVisitMap({
   const getVisitHistory = useCallback(async () => {
     try {
       const res = await apiClient.get(
-        `${BASE_URL}getVisitsByType/0/${userId}?reportType=daily`,
+        `getVisitsByType/0/${userId}?reportType=daily`,
         { headers: { Authorization: `Bearer ${token}` } }
       );
 

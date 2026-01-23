@@ -15,6 +15,10 @@ import LOSNavigator from "../Navigation/LOSNavigator";
 import CollectionNavigator from "../Navigation/CollectionNavigator";
 import AuthBootstrap from "./AuthBootstrap";
 
+import PaymentNavigator from "../Navigation/PaymentNavigator";
+import PaymentLogin from "../modules/payment/PaymentLogin";
+import ChatAppNavigator from "../Navigation/ChatAppNavigator";
+import ChatLogin from "../modules/chatApp/screen/ChatLogin";
 const Stack = createNativeStackNavigator();
 
 export default function AppNavigator() {
@@ -58,6 +62,20 @@ export default function AppNavigator() {
         <Stack.Screen
           name="CollectionFlow"
           component={isLoggedIn ? CollectionNavigator : CollectionLogin}
+        />
+      )}
+
+      {selectedModule === "payment" && (
+        <Stack.Screen
+          name="PaymentFlow"
+          component={isLoggedIn ? PaymentNavigator : PaymentLogin}
+        />
+      )}
+
+      {selectedModule === "chat" && (
+        <Stack.Screen
+          name="ChatFlow"
+          component={isLoggedIn ? ChatAppNavigator : ChatLogin}
         />
       )}
     </Stack.Navigator>

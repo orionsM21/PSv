@@ -55,7 +55,7 @@ const Deposition = () => {
     // dispatch(showLoader(true));
 
     apiClient
-      .get(`${BASE_URL}getDepositionSummeryByUserId/${userProfile?.userId}`, {
+      .get(`getDepositionSummeryByUserId/${userProfile?.userId}`, {
         headers: {
           Accept: "application/json",
           "Content-Type": "application/json",

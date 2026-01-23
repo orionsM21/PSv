@@ -131,6 +131,7 @@ buildscript {
         classpath("com.android.tools.build:gradle:8.2.2")
         classpath("org.jetbrains.kotlin:kotlin-gradle-plugin:$kotlin_version")
         classpath("com.facebook.react:react-native-gradle-plugin")
+        classpath("com.google.gms:google-services:4.4.0")
     }
 }
 
@@ -176,6 +177,11 @@ subprojects {
                         details.useVersion "18.0.2"
                     }
                 }
+
+                if (details.requested.group == "org.jetbrains.kotlin") {
+                details.useVersion("1.8.22")
+                details.because("Force Kotlin version to match AGP 8+")
+            }
             }
         }
     }

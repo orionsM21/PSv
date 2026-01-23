@@ -54,7 +54,7 @@ const CollateralDetails = () => {
 
     const getAllCollateral = () => {
         apiClient
-            .get(`${BASE_URL}getCollatralDetailsByLoanAccountNumber/${data.loanAccountNumber}`, {
+            .get(`getCollatralDetailsByLoanAccountNumber/${data.loanAccountNumber}`, {
                 headers: {
                     Accept: "application/json",
                     "Content-Type": "application/json",

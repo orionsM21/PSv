@@ -107,7 +107,7 @@ const CaseDetails = () => {
     // dispatch(showLoader(true));
 
     try {
-      const res = await apiClient.get(`${BASE_URL}getLender/${data?.lenderId}`, {
+      const res = await apiClient.get(`getLender/${data?.lenderId}`, {
         headers: {
           Accept: "application/json",
           "Content-Type": "application/json",
@@ -350,7 +350,7 @@ const CaseDetails = () => {
       }
 
       // 1) fetch stats
-      const res = await apiClient.get(`${BASE_URL}getStatsByLan/${data.loanAccountNumber}`, {
+      const res = await apiClient.get(`getStatsByLan/${data.loanAccountNumber}`, {
         headers: {
           Accept: "application/json",
           "Content-Type": "application/json",

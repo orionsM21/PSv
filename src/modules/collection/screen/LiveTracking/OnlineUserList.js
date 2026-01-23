@@ -119,7 +119,7 @@ const OnlineUserList = () => {
 
   const liveTrackerAdminConfigForOnetime = () => {
     apiClient
-      .get(`${BASE_URL}getTrackingConfig`, {
+      .get(`getTrackingConfig`, {
         headers: {
           Accept: 'application/json',
           'Content-Type': 'application/json',
@@ -162,7 +162,7 @@ const OnlineUserList = () => {
 
   const liveTrackerAdminConfig = () => {
     apiClient
-      .get(`${BASE_URL}getTrackingConfig`, {
+      .get(`getTrackingConfig`, {
         headers: {
           Accept: 'application/json',
           'Content-Type': 'application/json',
@@ -428,7 +428,7 @@ const OnlineUserList = () => {
     try {
       setLoadingUserNames(true);
       const response = await apiClient.get(
-        `${BASE_URL}getAllocatedLowerHierarchyByUserId/${userProfile?.userId}`,
+        `getAllocatedLowerHierarchyByUserId/${userProfile?.userId}`,
         {
           headers: {
             Accept: 'application/json',
@@ -477,7 +477,7 @@ const OnlineUserList = () => {
       setLoadingUserNames(true);
 
       const response = await apiClient.get(
-        `${BASE_URL}getAgencyByUserId/${userProfile?.userId}`,
+        `getAgencyByUserId/${userProfile?.userId}`,
         {
           headers: {
             Accept: 'application/json',
@@ -526,7 +526,7 @@ const OnlineUserList = () => {
     try {
       setLoadingUserNames(true);
 
-      const response = await apiClient.get(`${BASE_URL}getAllAgency`, {
+      const response = await apiClient.get(`getAllAgency`, {
         headers: {
           Accept: 'application/json',
           'Content-Type': 'application/json',
@@ -573,7 +573,7 @@ const OnlineUserList = () => {
     try {
       setLoadingUserNames(true);
       const response = await apiClient.get(
-        `${BASE_URL}getUserByAgency/${agencyId}`,
+        `getUserByAgency/${agencyId}`,
         {
           headers: {
             Accept: 'application/json',
@@ -605,7 +605,7 @@ const OnlineUserList = () => {
       setLoadingUserNames(true);
       const agencyIdsString = agencyIds.join(',');
       const response = await apiClient.get(
-        `${BASE_URL}getAllUserByAgencyId/${agencyIdsString}`,
+        `getAllUserByAgencyId/${agencyIdsString}`,
         {
           headers: {
             Accept: 'application/json',
@@ -686,7 +686,7 @@ const OnlineUserList = () => {
     }
     apiClient
       .post(
-        `${BASE_URL}getUserByFilter/${userProfile?.userId}`,
+        `getUserByFilter/${userProfile?.userId}`,
         payload, // Sending null as the request body
         {
           headers: {
@@ -756,7 +756,7 @@ const OnlineUserList = () => {
       toTime: '22-00',
     };
     try {
-      const response = await apiClient.post(`${BASE_URL}mapDataByUserId`, payload, {
+      const response = await apiClient.post(`mapDataByUserId`, payload, {
         headers: {
           Accept: 'application/json',
           'Content-Type': 'application/json',

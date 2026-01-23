@@ -3732,7 +3732,7 @@ const QDE = ({ route }) => {
 
     const fetchLeadDetailsbackup = useCallback(async (leadId) => {
         try {
-            const response = await axios.get(`${BASE_URL}getLeadByLeadId/${leadId}`, {
+            const response = await axios.get(`${BASE_URL}${BASE_URL}getLeadByLeadId/${leadId}`, {
                 headers: {
                     Accept: 'application/json',
                     'Content-Type': 'application/json',

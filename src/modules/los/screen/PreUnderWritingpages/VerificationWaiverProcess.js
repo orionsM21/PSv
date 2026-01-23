@@ -378,7 +378,7 @@ const VerificationWaiverProcess = ({ route }) => {
 
     const getAllVerificationWaiverFromInitiate = useCallback(async () => {
         try {
-            const response = await axios.get(`${BASE_URL}getAllVerificationWaiverFromInitiate`,
+            const response = await axios.get(`${BASE_URL}${BASE_URL}getAllVerificationWaiverFromInitiate`,
                 {
                     headers: {
                         Accept: 'application/json',
@@ -457,7 +457,7 @@ const VerificationWaiverProcess = ({ route }) => {
     //     }
     //     try {
     //         const response = await axios.get(
-    //             `${BASE_URL}getApplicationById/${applicantidApplicant}`,
+    //             `getApplicationById/${applicantidApplicant}`,
     //         );
     //         const data = response.data.data;
     //         // 
@@ -995,7 +995,7 @@ const VerificationWaiverProcess = ({ route }) => {
 
     const getByTypelookupTypeDecision = async () => {
         try {
-            const response = await axios.get(`${BASE_URL}getByType?lookupType=valuationDecision`,
+            const response = await axios.get(`${BASE_URL}${BASE_URL}getByType?lookupType=valuationDecision`,
                 {
                     headers: {
                         Accept: 'application/json',
@@ -1019,7 +1019,7 @@ const VerificationWaiverProcess = ({ route }) => {
 
     const getByTypelookupTypeWaiverReason = async () => {
         try {
-            const response = await axios.get(`${BASE_URL}getByType?lookupType=WaiverReason`,
+            const response = await axios.get(`${BASE_URL}${BASE_URL}getByType?lookupType=WaiverReason`,
                 {
                     headers: {
                         Accept: 'application/json',

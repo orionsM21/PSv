@@ -1,17 +1,16 @@
 import { createField } from '../configs/createField';
 import { PAN_OCR_CONFIG } from '../configs/pan.config';
 
-export const parsePanOCR = (text) => {
-  const lines = text
-    .split('\n')
-    .map(l => l.trim())
-    .filter(Boolean);
+export const parsePanOCR = (input) => {
+  // 🔐 Normalize input (ARRAY | STRING)
+  const lines = Array.isArray(input)
+    ? input.map(l => String(l).trim()).filter(Boolean)
+    : String(input)
+        .split('\n')
+        .map(l => l.trim())
+        .filter(Boolean);
 
-  const {
-    pan,
-    dob,
-    name,
-  } = PAN_OCR_CONFIG.fields;
+  const { pan, dob, name } = PAN_OCR_CONFIG.fields;
 
   const result = {
     firstName: createField('', 0),
@@ -21,7 +20,9 @@ export const parsePanOCR = (text) => {
     dob: createField('', 0),
   };
 
-  for (const line of lines) {
+  for (const rawLine of lines) {
+    const line = rawLine.toUpperCase(); // normalize once
+
     /* ---------------- PAN ---------------- */
     if (!result.pan.value && pan.regex.test(line)) {
       result.pan = createField(line, pan.confidence);
@@ -40,13 +41,15 @@ export const parsePanOCR = (text) => {
       name.regex.test(line) &&
       (!name.exclude || !name.exclude.test(line))
     ) {
-      const parts = line.split(/\s+/);
+      const parts = rawLine.split(/\s+/); // preserve original casing
 
       result.firstName = createField(parts[0] || '', name.confidence);
+
       result.middleName = createField(
         parts.length > 2 ? parts.slice(1, -1).join(' ') : '',
-        name.confidence - 0.1
+        Math.max(name.confidence - 0.1, 0)
       );
+
       result.lastName = createField(
         parts.length > 1 ? parts[parts.length - 1] : '',
         name.confidence

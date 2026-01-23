@@ -3,7 +3,6 @@ import { View, Text, FlatList, StyleSheet, TouchableOpacity, Dimensions } from '
 import { Button, Divider, Provider } from 'react-native-paper';
 import { useNavigation } from '@react-navigation/native';
 import Card from './Card';
-import axios from 'axios';
 import { BASE_URL } from '../../api/Endpoints';
 import { useSelector } from 'react-redux';
 

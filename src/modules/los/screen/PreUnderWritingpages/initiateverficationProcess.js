@@ -1221,7 +1221,7 @@ const InitiateverficationProcess = ({ route }) => {
 
       const response = await RNFetchBlob.fetch(
         "PUT",
-        `${BASE_URL}createInitiateVerification`,
+        `createInitiateVerification`,
         {
           Authorization: `Bearer ${token}`,
           "Content-Type": "multipart/form-data",

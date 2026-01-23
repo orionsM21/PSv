@@ -62,7 +62,7 @@ const ViewPTP = () => {
         };
 
         try {
-            await apiClient.post(`${BASE_URL}addPaymentInfo`, payload, {
+            await apiClient.post(`addPaymentInfo`, payload, {
                 headers: {
                     Accept: "application/json",
                     "Content-Type": "application/json",

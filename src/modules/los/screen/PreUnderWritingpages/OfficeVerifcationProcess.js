@@ -512,7 +512,7 @@ const OfficeVerifcationProcess = ({ route }) => {
   // const getLogsDetailsByApplicationNumber = async () => {
   //   try {
   //     const response = await axios.get(
-  //       `${BASE_URL}getLogsDetailsByApplicationNumber/${item.applicationNo}`,
+  //       `getLogsDetailsByApplicationNumber/${item.applicationNo}`,
   //     );
   //     const data = response.data.data;
   //     setLogDetails(data);
@@ -1319,7 +1319,7 @@ const OfficeVerifcationProcess = ({ route }) => {
       try {
         const response = await RNFetchBlob.fetch(
           'PUT',
-          `${BASE_URL}addOfficeVerification`,
+          `addOfficeVerification`,
           {
             'Content-Type': 'multipart/form-data',
             Authorization: 'Bearer ' + token,
@@ -1801,7 +1801,7 @@ const OfficeVerifcationProcess = ({ route }) => {
   //           try {
   //             const response = await RNFetchBlob.fetch(
   //               'POST',
-  //               `${BASE_URL}uploadFile/${applicantidApplicant}`,
+  //               `uploadFile/${applicantidApplicant}`,
   //               {
   //                 'Content-Type': 'multipart/form-data',
   //               },

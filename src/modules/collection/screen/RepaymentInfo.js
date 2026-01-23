@@ -101,7 +101,7 @@ const RepaymentInfo = () => {
       };
 
       /** 1️⃣ -- Send Payment Details */
-      await apiClient.post(`${BASE_URL}addPaymentInfo`, payload, {
+      await apiClient.post(`addPaymentInfo`, payload, {
         headers: {
           Accept: "application/json",
           "Content-Type": "application/json",
@@ -113,7 +113,7 @@ const RepaymentInfo = () => {
       const url = getInProcessUrl(currentRoles, userProfile);
 
       await apiClient.put(
-        `${BASE_URL}${url}/${userProfile.userId}/${data.loanAccountNumber}`,
+        `${url}/${userProfile.userId}/${data.loanAccountNumber}`,
         {},
         {
           headers: {

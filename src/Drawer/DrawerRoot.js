@@ -6,6 +6,7 @@ import GoldDrawerUI from "./gold/GoldDrawerUI";
 import LOSDrawerUI from "./los/LOSDrawerUI";
 import VehicleDrawerUI from "./vehicle/VehicleDrawerUI";
 import CollectionDrawerUI from "./collection/CollectionDrawerUI";
+import PaymentDrawer from "./payment/PaymentDrawer";
 
 export default function DrawerRoot() {
     const module = useSelector(state => state.module.selectedModule);
@@ -20,6 +21,8 @@ export default function DrawerRoot() {
                 return <VehicleDrawerUI />;
             case "collection":
                 return <CollectionDrawerUI />;
+            case "payment":
+                return < PaymentDrawer />;
             default:
                 return null;
         }

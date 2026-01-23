@@ -196,7 +196,7 @@ const OfflineUserList = () => {
     }
     try {
       const response = await apiClient.post(
-        `${BASE_URL}getUserByFilter/${userProfile.userId}`,
+        `getUserByFilter/${userProfile.userId}`,
         payload, // Sending null as the request body
         {
           headers: {

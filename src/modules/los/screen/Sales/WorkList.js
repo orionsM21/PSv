@@ -109,7 +109,7 @@ const WorkList = ({ route }) => {
     if (score >= 650 && score <= 900) {
       setState(numericValue);
     }
-    // ✅ Allow typing values less than 650 (user might still be typing)
+    // ✅ Allow  values less than 650 (user might still be )
     else if (score < 650) {
       setState(numericValue);
     }
@@ -1635,7 +1635,7 @@ const WorkList = ({ route }) => {
   const getAllLeadStatusCo = async () => {
     try {
       // const response = await axios.get(
-      //   `${BASE_URL}getByType?lookupType=PrimaryOccupation`,
+      //   `getByType?lookupType=PrimaryOccupation`,
       //   {
       //     headers: {
       //       Accept: 'application/json',
@@ -2734,7 +2734,7 @@ const WorkList = ({ route }) => {
           // Call API
           const response = await RNFetchBlob.fetch(
             'POST',
-            `${BASE_URL}uploadLeadCibilReport/${SelectedLeadApplicant.id}`,
+            `uploadLeadCibilReport/${SelectedLeadApplicant.id}`,
             {
               'Content-Type': 'multipart/form-data',
               Authorization: 'Bearer ' + token,
@@ -2811,7 +2811,7 @@ const WorkList = ({ route }) => {
 
         const response = await RNFetchBlob.fetch(
           'POST',
-          `${BASE_URL}uploadLeadCibilReport/${selectedCoApplicant.id}`,
+          `uploadLeadCibilReport/${selectedCoApplicant.id}`,
           {
             'Content-Type': 'multipart/form-data',
             Authorization: 'Bearer ' + token,
