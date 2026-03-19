@@ -1,79 +1,139 @@
-This is a new [**React Native**](https://reactnative.dev) project, bootstrapped using [`@react-native-community/cli`](https://github.com/react-native-community/cli).
+## 📸 Screenshots
 
-# Getting Started
+### Module Selection
+![Module Selection](assets/screenshots/module-selection.png)
 
->**Note**: Make sure you have completed the [React Native - Environment Setup](https://reactnative.dev/docs/environment-setup) instructions till "Creating a new application" step, before proceeding.
+### Role Selection
+![Role Selection](assets/screenshots/role-selection.png)
 
-## Step 1: Start the Metro Server
+### Payment Screen
+![Payment Screen](assets/screenshots/payment-screen.png)
 
-First, you will need to start **Metro**, the JavaScript _bundler_ that ships _with_ React Native.
+# 🚀 PSv - Scalable Fintech React Native Architecture
 
-To start Metro, run the following command from the _root_ of your React Native project:
+A production-grade React Native application demonstrating a **modular, scalable architecture** for fintech systems like Loan Origination (LOS), Collections, Payments, and more.
+
+---
+
+## 📌 Problem Statement
+
+Fintech applications typically involve:
+
+- Multiple independent modules (LOS, Collections, Payments)
+- Role-based access (Admin, Loan Officer, Agent)
+- Dynamic environments (different BASE URLs)
+- Secure API communication
+- Complex state management
+
+This project solves these challenges using a **clean, scalable architecture**.
+
+---
+
+## 🏗 Architecture Overview
+UI (Screens / Components) ↓ Redux (State Management) ↓ Service Layer (Business Logic) ↓ API Client (Axios + Interceptors) ↓ Backend
+
+### Key Principles:
+- Separation of concerns
+- Feature-based modular architecture
+- Centralized API handling
+- Reusable components
+
+---
+
+## 📂 Folder Structure
+
+src/ ├── app/            # Navigation setup ├── modules/        # Feature-based modules │    ├── goldLoan/ │    ├── payment/ │    ├── collection/ │    ├── los/ ├── redux/          # Global state management ├── common/         # Utilities & shared logic ├── Drawer/         # Custom drawer system ├── components/     # Reusable UI components
+
+---
+
+## ✨ Features
+
+- ✅ Role-based module access
+- ✅ Modular architecture (plug-and-play features)
+- ✅ Dynamic BASE_URL (runtime config)
+- ✅ Centralized API handling using Axios interceptors
+- ✅ File upload support (Blob handling)
+- ✅ Persistent authentication (AsyncStorage)
+- ✅ Automatic logout on token expiry (401 handling)
+
+---
+
+## ⚡ Performance Optimizations
+
+- `useMemo` → Avoid unnecessary recalculations
+- `React.memo` → Prevent unnecessary re-renders
+- `useCallback` → Stable function references
+- Optimized `FlatList` rendering
+
+---
+
+## 🔐 Security
+
+- Secure token storage using AsyncStorage
+- Automatic session expiration handling
+- Protected API calls using interceptors
+
+---
+
+## 📈 Impact
+
+- Built scalable modular architecture for fintech flows
+- Reduced code duplication via shared API/service layer
+- Improved maintainability with clear separation of concerns
+- Enabled easy addition of new modules without affecting existing ones
+
+---
+
+## 📸 Screenshots
+
+### Module Selection
+![Module Selection](assets/screenshots/module-selection.png)
+
+### Role Selection
+![Role Selection](assets/screenshots/role-selection.png)
+
+### Payment Screen
+![Payment Screen](assets/screenshots/payment-screen.png)
+
+---
+
+## 🎥 Demo
+
+> Add your demo video link here (Google Drive / YouTube)
+
+---
+
+## 🧠 Real-world Use Case
+
+Inspired by real fintech systems handling:
+
+- Loan Origination Systems (LOS)
+- Collection & Recovery apps (15k+ users)
+- Payment processing flows
+
+---
+
+## 🚀 Getting Started
+
+### 1. Install dependencies
 
 ```bash
-# using npm
+npm install
+
+2. Start Metro
 npm start
 
-# OR using Yarn
-yarn start
-```
+3. Run app
+npm run android 
 
-## Step 2: Start your Application
+🔧 Tech Stack
+React Native
+Redux Toolkit
+Axios
+AsyncStorage
+React Navigation
+Gesture Handler
 
-Let Metro Bundler run in its _own_ terminal. Open a _new_ terminal from the _root_ of your React Native project. Run the following command to start your _Android_ or _iOS_ app:
-
-### For Android
-
-```bash
-# using npm
-npm run android
-
-# OR using Yarn
-yarn android
-```
-
-### For iOS
-
-```bash
-# using npm
-npm run ios
-
-# OR using Yarn
-yarn ios
-```
-
-If everything is set up _correctly_, you should see your new app running in your _Android Emulator_ or _iOS Simulator_ shortly provided you have set up your emulator/simulator correctly.
-
-This is one way to run your app — you can also run it directly from within Android Studio and Xcode respectively.
-
-## Step 3: Modifying your App
-
-Now that you have successfully run the app, let's modify it.
-
-1. Open `App.tsx` in your text editor of choice and edit some lines.
-2. For **Android**: Press the <kbd>R</kbd> key twice or select **"Reload"** from the **Developer Menu** (<kbd>Ctrl</kbd> + <kbd>M</kbd> (on Window and Linux) or <kbd>Cmd ⌘</kbd> + <kbd>M</kbd> (on macOS)) to see your changes!
-
-   For **iOS**: Hit <kbd>Cmd ⌘</kbd> + <kbd>R</kbd> in your iOS Simulator to reload the app and see your changes!
-
-## Congratulations! :tada:
-
-You've successfully run and modified your React Native App. :partying_face:
-
-### Now what?
-
-- If you want to add this new React Native code to an existing application, check out the [Integration guide](https://reactnative.dev/docs/integration-with-existing-apps).
-- If you're curious to learn more about React Native, check out the [Introduction to React Native](https://reactnative.dev/docs/getting-started).
-
-# Troubleshooting
-
-If you can't get this to work, see the [Troubleshooting](https://reactnative.dev/docs/troubleshooting) page.
-
-# Learn More
-
-To learn more about React Native, take a look at the following resources:
-
-- [React Native Website](https://reactnative.dev) - learn more about React Native.
-- [Getting Started](https://reactnative.dev/docs/environment-setup) - an **overview** of React Native and how setup your environment.
-- [Learn the Basics](https://reactnative.dev/docs/getting-started) - a **guided tour** of the React Native **basics**.
-- [Blog](https://reactnative.dev/blog) - read the latest official React Native **Blog** posts.
-- [`@facebook/react-native`](https://github.com/facebook/react-native) - the Open Source; GitHub **repository** for React Native.
+👨‍💻 Author
+Shivam Mishra
+React Native Developer (2+ years)
