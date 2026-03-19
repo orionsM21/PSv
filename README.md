@@ -24,6 +24,8 @@
 ![](assets/screenshots/DebCard.png)
 ![](assets/screenshots/Flipdebit.png)
 ![](assets/screenshots/UserProfile.png)
+![](assets/screenshots/payment-Settings.png)
+
 
 
 
