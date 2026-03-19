@@ -20,9 +20,12 @@
 ![](assets/screenshots/Payment-Drawer.png)
 ![](assets/screenshots/Send-Money.png)
 ![](assets/screenshots/Receive-Money.png)
-![](assets/screenshots/UserProfile.png)
+![](assets/screenshots/MoneyAnalysis.png)
 ![](assets/screenshots/DebCard.png)
 ![](assets/screenshots/Flipdebit.png)
+![](assets/screenshots/UserProfile.png)
+
+
 
 # 🚀 PSv - Scalable Fintech React Native Architecture
 
