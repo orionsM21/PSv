@@ -15,6 +15,15 @@
 ![Allcation](assets/screenshots/Allocation.png)
 ![DashboardCollection](assets/screenshots/Dashboard-Collection.png)
 
+### Payment
+![](assets/screenshots/Payment-Dashboard.png)
+![](assets/screenshots/Payment-Drawer.png)
+![](assets/screenshots/Send-Money.png)
+![](assets/screenshots/Receive-Money.png)
+![](assets/screenshots/UserProfile.png)
+![](assets/screenshots/DebCard.png)
+![](assets/screenshots/Flipdebit.png)
+
 # 🚀 PSv - Scalable Fintech React Native Architecture
 
 A production-grade React Native application demonstrating a **modular, scalable architecture** for fintech systems like Loan Origination (LOS), Collections, Payments, and more.
