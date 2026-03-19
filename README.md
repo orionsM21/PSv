@@ -11,6 +11,8 @@
 ![Screen](assets/screenshots/UITheme.png)
 [](assets/screenshots/VehicleLoan.png)
 [OCR](assets/screenshots/OCR-Via-Camera-Upload.png)
+[Allcation](assets/screenshots/Allocation.png)
+[DashboardCollection](assets/screenshots/Dashboard-Collection.png)
 
 # 🚀 PSv - Scalable Fintech React Native Architecture
 
