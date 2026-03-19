@@ -1,7 +1,7 @@
 ## 📸 Screenshots
 
 ### Module Selection
-![Module Selection](assets/screenshots/module-selection.png)
+![Module Selection](assets/screenshots/Allocation.png)
 
 ### Role Selection
 ![Role Selection](assets/screenshots/role-selection.png)
