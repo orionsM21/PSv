@@ -10,6 +10,7 @@
 ![Payment Screen](assets/screenshots/GoldLoan.png)
 ![Screen](assets/screenshots/UITheme.png)
 [](assets/screenshots/VehicleLoan.png)
+### Others
 [OCR](assets/screenshots/OCR-Via-Camera-Upload.png)
 [Allcation](assets/screenshots/Allocation.png)
 [DashboardCollection](assets/screenshots/Dashboard-Collection.png)
