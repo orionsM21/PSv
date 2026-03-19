@@ -1,13 +1,15 @@
 ## 📸 Screenshots
 
+### Organization Selection
+![Module Selection](assets/screenshots/ModuleSelector.png)
+
 ### Module Selection
-![Module Selection](assets/screenshots/Allocation.png)
+![Role Selection](assets/screenshots/ModuleSelection.png)
 
-### Role Selection
-![Role Selection](assets/screenshots/role-selection.png)
-
-### Payment Screen
-![Payment Screen](assets/screenshots/payment-screen.png)
+###  Screen
+![Payment Screen](assets/screenshots/GoldLoan.png)
+![Screen](assets/screenshots/UITheme.png)
+[](assets/screenshots/VehicleLoan.png)
 
 # 🚀 PSv - Scalable Fintech React Native Architecture
 
