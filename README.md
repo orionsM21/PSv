@@ -1,138 +1,176 @@
-## DEMO APK File For Use 
-![APK Download Link](https://drive.google.com/uc?export=download&id=1MMT6pMfnT08-uBI9knZi2wf0kurNqO07)
+# 🚀 PSv — Scalable Fintech React Native Architecture
+
+A **production-grade React Native application** demonstrating a **modular, scalable architecture** for fintech systems like Loan Origination (LOS), Collections, and Payments.
+
+---
+
+## 📱 Demo APK
+
+👉 https://drive.google.com/uc?export=download&id=1MMT6pMfnT08-uBI9knZi2wf0kurNqO07
+
+---
 
 ## 📸 Screenshots
 
-### Organization Selection
-![Module Selection](assets/screenshots/ModuleSelector.png)
+### 🧩 Module & Role Selection
 
-### Module Selection
+![Module Selection](assets/screenshots/ModuleSelector.png)
 ![Role Selection](assets/screenshots/ModuleSelection.png)
 
-###  Screen
-![Payment Screen](assets/screenshots/GoldLoan.png)
-![Screen](assets/screenshots/UITheme.png)
-![](assets/screenshots/VehicleLoan.png)
-### Others
-![OCR](assets/screenshots/OCR-Via-Camera-Upload.png)
-![Allcation](assets/screenshots/Allocation.png)
-![DashboardCollection](assets/screenshots/Dashboard-Collection.png)
+### 💰 Loan Modules
 
-### Payment
-![](assets/screenshots/Payment-Dashboard.png)
-![](assets/screenshots/Payment-Drawer.png)
-![](assets/screenshots/Send-Money.png)
-![](assets/screenshots/Receive-Money.png)
-![](assets/screenshots/MoneyAnalysis.png)
-![](assets/screenshots/DebCard.png)
-![](assets/screenshots/Flipdebit.png)
-![](assets/screenshots/UserProfile.png)
-![](assets/screenshots/payment-Settings.png)
+![Gold Loan](assets/screenshots/GoldLoan.png)
+![Vehicle Loan](assets/screenshots/VehicleLoan.png)
 
+### 💳 Payments
 
+![Payment Dashboard](assets/screenshots/Payment-Dashboard.png)
+![Payment Drawer](assets/screenshots/Payment-Drawer.png)
+![Send Money](assets/screenshots/Send-Money.png)
+![Receive Money](assets/screenshots/Receive-Money.png)
+![Money Analysis](assets/screenshots/MoneyAnalysis.png)
+![Debit Card](assets/screenshots/DebCard.png)
+![Flip Card](assets/screenshots/Flipdebit.png)
+![User Profile](assets/screenshots/UserProfile.png)
+![Payment Settings](assets/screenshots/payment-Settings.png)
 
+### 📊 Collection
 
-# 🚀 PSv - Scalable Fintech React Native Architecture
+![Allocation](assets/screenshots/Allocation.png)
+![Collection Dashboard](assets/screenshots/Dashboard-Collection.png)
 
-A production-grade React Native application demonstrating a **modular, scalable architecture** for fintech systems like Loan Origination (LOS), Collections, Payments, and more.
+### 🔍 OCR
+
+![OCR Upload](assets/screenshots/OCR-Via-Camera-Upload.png)
 
 ---
 
 ## 📌 Problem Statement
 
-Fintech applications typically involve:
+Modern fintech applications require:
 
-- Multiple independent modules (LOS, Collections, Payments)
-- Role-based access (Admin, Loan Officer, Agent)
-- Dynamic environments (different BASE URLs)
-- Secure API communication
-- Complex state management
-
-This project solves these challenges using a **clean, scalable architecture**.
+* Multiple independent modules (LOS, Collections, Payments)
+* Role-based access control (Admin, Agent, Officer)
+* Dynamic environment handling (multi-tenant BASE URLs)
+* Secure API communication with token lifecycle
+* Scalable architecture for continuous feature expansion
 
 ---
 
 ## 🏗 Architecture Overview
-UI (Screens / Components) ↓ Redux (State Management) ↓ Service Layer (Business Logic) ↓ API Client (Axios + Interceptors) ↓ Backend
 
-### Key Principles:
-- Separation of concerns
-- Feature-based modular architecture
-- Centralized API handling
-- Reusable components
+```
+UI (Screens / Components)
+        ↓
+Redux Toolkit (Global State)
+        ↓
+Service Layer (Business Logic)
+        ↓
+API Client (Axios + Interceptors)
+        ↓
+Backend Services
+```
+
+---
+
+## ⚙️ Architectural Decisions
+
+### 1. Feature-Based Modular Design
+
+* Each domain (LOS, Payment, Collection) is isolated
+* Enables independent development & scaling
+* Reduces cross-module coupling
+
+### 2. Centralized API Layer
+
+* Axios instance with interceptors
+* Handles:
+
+  * Auth token injection
+  * Global error handling
+  * Automatic logout on 401
+
+### 3. Service Layer Abstraction
+
+* Business logic separated from UI
+* Improves testability and reuse
+
+### 4. Global State Management
+
+* Redux Toolkit for predictable state
+* Manages:
+
+  * Authentication state
+  * User roles
+  * Global configuration
 
 ---
 
 ## 📂 Folder Structure
 
-src/ ├── app/            # Navigation setup ├── modules/        # Feature-based modules │    ├── goldLoan/ │    ├── payment/ │    ├── collection/ │    ├── los/ ├── redux/          # Global state management ├── common/         # Utilities & shared logic ├── Drawer/         # Custom drawer system ├── components/     # Reusable UI components
+```
+src/
+├── app/              # Navigation & app setup
+├── modules/          # Feature modules
+│   ├── goldLoan/
+│   ├── payment/
+│   ├── collection/
+│   ├── los/
+├── redux/            # Global state management
+├── common/           # Utilities & helpers
+├── components/       # Reusable UI components
+├── Drawer/           # Custom drawer system
+```
 
 ---
 
-## ✨ Features
+## ✨ Key Features
 
-- ✅ Role-based module access
-- ✅ Modular architecture (plug-and-play features)
-- ✅ Dynamic BASE_URL (runtime config)
-- ✅ Centralized API handling using Axios interceptors
-- ✅ File upload support (Blob handling)
-- ✅ Persistent authentication (AsyncStorage)
-- ✅ Automatic logout on token expiry (401 handling)
+* Role-based module access
+* Modular plug-and-play architecture
+* Dynamic BASE_URL (runtime configurable)
+* Centralized API handling using Axios interceptors
+* File upload support (Blob handling)
+* Persistent authentication using AsyncStorage
+* Automatic logout on token expiry
 
 ---
 
-## ⚡ Performance Optimizations
+## ⚡ Performance Optimization
 
-- `useMemo` → Avoid unnecessary recalculations
-- `React.memo` → Prevent unnecessary re-renders
-- `useCallback` → Stable function references
-- Optimized `FlatList` rendering
+* React.memo → Prevent unnecessary re-renders
+* useMemo → Avoid expensive recalculations
+* useCallback → Stable function references
+* Optimized FlatList rendering
+* Reduced redundant Redux updates
 
 ---
 
 ## 🔐 Security
 
-- Secure token storage using AsyncStorage
-- Automatic session expiration handling
-- Protected API calls using interceptors
+* Token-based authentication
+* Secure storage using AsyncStorage
+* Interceptor-based API protection
+* Session invalidation on expiry
 
 ---
 
-## 📈 Impact
+## 📈 Scalability
 
-- Built scalable modular architecture for fintech flows
-- Reduced code duplication via shared API/service layer
-- Improved maintainability with clear separation of concerns
-- Enabled easy addition of new modules without affecting existing ones
-
----
-
-## 📸 Screenshots
-
-### Module Selection
-![Module Selection](assets/screenshots/module-selection.png)
-
-### Role Selection
-![Role Selection](assets/screenshots/role-selection.png)
-
-### Payment Screen
-![Payment Screen](assets/screenshots/payment-screen.png)
+* Independent feature modules
+* Easy addition of new modules
+* Reusable service and API layers
+* Config-driven environment switching
 
 ---
 
-## 🎥 Demo
-
-> Add your demo video link here (Google Drive / YouTube)
-
----
-
-## 🧠 Real-world Use Case
+## 🧠 Real-World Use Case
 
 Inspired by real fintech systems handling:
 
-- Loan Origination Systems (LOS)
-- Collection & Recovery apps (15k+ users)
-- Payment processing flows
+* Loan Origination Systems (LOS)
+* Collection & recovery platforms (10k+ users)
+* Payment transaction systems
 
 ---
 
@@ -142,21 +180,53 @@ Inspired by real fintech systems handling:
 
 ```bash
 npm install
+```
 
-2. Start Metro
+### 2. Start Metro
+
+```bash
 npm start
+```
 
-3. Run app
-npm run android 
+### 3. Run Android
 
-🔧 Tech Stack
-React Native
-Redux Toolkit
-Axios
-AsyncStorage
-React Navigation
-Gesture Handler
+```bash
+npm run android
+```
 
-👨‍💻 Author
-Shivam Mishra
+---
+
+## 🔧 Tech Stack
+
+* React Native
+* Redux Toolkit
+* Axios
+* AsyncStorage
+* React Navigation
+* Gesture Handler
+
+---
+
+## ⚠️ Known Limitations
+
+* No offline support
+* No caching layer (React Query / SWR)
+* Basic token handling (no refresh queue)
+* No automated tests
+
+---
+
+## 🔮 Future Improvements
+
+* Add React Query for server-state management
+* Implement token refresh queue handling
+* Add offline-first support (MMKV/SQLite)
+* Introduce unit & integration testing
+* Performance monitoring & profiling
+
+---
+
+## 👨‍💻 Author
+
+**Shivam Mishra**
 React Native Developer (2+ years)
