@@ -14,13 +14,17 @@ A **production-grade React Native application** demonstrating a **modular, scala
 
 ### 🧩 Module & Role Selection
 
-![Module Selection](assets/screenshots/ModuleSelector.png)
-![Role Selection](assets/screenshots/ModuleSelection.png)
+![Module Selector](assets/screenshots/ModuleSelector.png)
+![Module Selection](assets/screenshots/ModuleSelection.png)
+
+---
 
 ### 💰 Loan Modules
 
 ![Gold Loan](assets/screenshots/GoldLoan.png)
 ![Vehicle Loan](assets/screenshots/VehicleLoan.png)
+
+---
 
 ### 💳 Payments
 
@@ -34,10 +38,14 @@ A **production-grade React Native application** demonstrating a **modular, scala
 ![User Profile](assets/screenshots/UserProfile.png)
 ![Payment Settings](assets/screenshots/payment-Settings.png)
 
+---
+
 ### 📊 Collection
 
 ![Allocation](assets/screenshots/Allocation.png)
 ![Collection Dashboard](assets/screenshots/Dashboard-Collection.png)
+
+---
 
 ### 🔍 OCR
 
@@ -75,13 +83,13 @@ Backend Services
 
 ## ⚙️ Architectural Decisions
 
-### 1. Feature-Based Modular Design
+### Feature-Based Modular Design
 
 * Each domain (LOS, Payment, Collection) is isolated
 * Enables independent development & scaling
 * Reduces cross-module coupling
 
-### 2. Centralized API Layer
+### Centralized API Layer
 
 * Axios instance with interceptors
 * Handles:
@@ -90,19 +98,15 @@ Backend Services
   * Global error handling
   * Automatic logout on 401
 
-### 3. Service Layer Abstraction
+### Service Layer Abstraction
 
 * Business logic separated from UI
-* Improves testability and reuse
+* Improves reusability and testability
 
-### 4. Global State Management
+### Global State Management
 
 * Redux Toolkit for predictable state
-* Manages:
-
-  * Authentication state
-  * User roles
-  * Global configuration
+* Manages auth, roles, and config
 
 ---
 
@@ -110,16 +114,16 @@ Backend Services
 
 ```
 src/
-├── app/              # Navigation & app setup
-├── modules/          # Feature modules
+├── app/
+├── modules/
 │   ├── goldLoan/
 │   ├── payment/
 │   ├── collection/
 │   ├── los/
-├── redux/            # Global state management
-├── common/           # Utilities & helpers
-├── components/       # Reusable UI components
-├── Drawer/           # Custom drawer system
+├── redux/
+├── common/
+├── components/
+├── Drawer/
 ```
 
 ---
@@ -128,69 +132,47 @@ src/
 
 * Role-based module access
 * Modular plug-and-play architecture
-* Dynamic BASE_URL (runtime configurable)
-* Centralized API handling using Axios interceptors
-* File upload support (Blob handling)
-* Persistent authentication using AsyncStorage
-* Automatic logout on token expiry
+* Dynamic BASE_URL configuration
+* Centralized API handling
+* File upload support
+* Persistent authentication
+* Auto logout on token expiry
 
 ---
 
 ## ⚡ Performance Optimization
 
-* React.memo → Prevent unnecessary re-renders
-* useMemo → Avoid expensive recalculations
-* useCallback → Stable function references
-* Optimized FlatList rendering
-* Reduced redundant Redux updates
+* React.memo
+* useMemo
+* useCallback
+* Optimized FlatList
+* Reduced unnecessary renders
 
 ---
 
 ## 🔐 Security
 
 * Token-based authentication
-* Secure storage using AsyncStorage
-* Interceptor-based API protection
-* Session invalidation on expiry
+* Secure storage (AsyncStorage)
+* Interceptor-based protection
+* Session expiration handling
 
 ---
 
 ## 📈 Scalability
 
-* Independent feature modules
-* Easy addition of new modules
-* Reusable service and API layers
-* Config-driven environment switching
-
----
-
-## 🧠 Real-World Use Case
-
-Inspired by real fintech systems handling:
-
-* Loan Origination Systems (LOS)
-* Collection & recovery platforms (10k+ users)
-* Payment transaction systems
+* Independent modules
+* Easy feature expansion
+* Shared API/service layer
+* Config-driven environments
 
 ---
 
 ## 🚀 Getting Started
 
-### 1. Install dependencies
-
 ```bash
 npm install
-```
-
-### 2. Start Metro
-
-```bash
 npm start
-```
-
-### 3. Run Android
-
-```bash
 npm run android
 ```
 
@@ -203,30 +185,10 @@ npm run android
 * Axios
 * AsyncStorage
 * React Navigation
-* Gesture Handler
-
----
-
-## ⚠️ Known Limitations
-
-* No offline support
-* No caching layer (React Query / SWR)
-* Basic token handling (no refresh queue)
-* No automated tests
-
----
-
-## 🔮 Future Improvements
-
-* Add React Query for server-state management
-* Implement token refresh queue handling
-* Add offline-first support (MMKV/SQLite)
-* Introduce unit & integration testing
-* Performance monitoring & profiling
 
 ---
 
 ## 👨‍💻 Author
 
-**Shivam Mishra**
-React Native Developer (2+ years)
+Shivam Mishra
+React Native Developer
