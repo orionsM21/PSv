@@ -12,6 +12,104 @@ This project focuses on **scalability, performance, reliability, and real-world 
 
 ---
 
+## 📸 Product Walkthrough
+
+### 🧩 Multi-Module Entry & Role-Based Access
+
+![Module Selector](assets/screenshots/ModuleSelector.png)
+![Module Selection](assets/screenshots/ModuleSelection.png)
+
+* Dynamic module loading based on **user role**
+* Supports **multi-tenant fintech environments**
+
+---
+
+### 🎨 UI System & Theming
+
+![UI Theme](assets/screenshots/UITheme.png)
+
+* Centralized design system
+* Consistent UI across modules
+* Scalable styling strategy
+
+---
+
+### 💰 Loan Systems (LOS + Gold + Vehicle)
+
+![Gold Loan](assets/screenshots/GoldLoan.png)
+![Vehicle Loan](assets/screenshots/VehicleLoan.png)
+
+* Loan lifecycle handling
+* Form-heavy workflows with validation
+* Domain-isolated architecture
+
+---
+
+### 💳 Payments Ecosystem
+
+#### Dashboard & Navigation
+
+![Payment Dashboard](assets/screenshots/Payment-Dashboard.png)
+![Payment Drawer](assets/screenshots/Payment-Drawer.png)
+
+#### Transactions
+
+![Send Money](assets/screenshots/Send-Money.png)
+![Receive Money](assets/screenshots/Receive-Money.png)
+
+#### Financial Insights
+
+![Money Analysis](assets/screenshots/MoneyAnalysis.png)
+
+#### Card System
+
+![Debit Card](assets/screenshots/DebCard.png)
+![Flip Card](assets/screenshots/Flipdebit.png)
+
+#### User & Settings
+
+![User Profile](assets/screenshots/UserProfile.png)
+![Payment Settings](assets/screenshots/payment-Settings.png)
+
+* Modular payment flows
+* Transaction handling UI
+* Scalable financial dashboard architecture
+
+---
+
+### 📊 Collection & Field Operations
+
+![Allocation](assets/screenshots/Allocation.png)
+![Collection Dashboard](assets/screenshots/Dashboard-Collection.png)
+![My Visits](assets/screenshots/MyVisits.png)
+
+* Agent-based workflows
+* Allocation and tracking systems
+* Field data handling
+
+---
+
+### 🔍 OCR & Document Processing
+
+![OCR Upload](assets/screenshots/OCR-Via-Camera-Upload.png)
+
+* Camera + file upload integration
+* Pre-processing & filtering logic
+* Real-world document parsing support
+
+---
+
+### 🧾 Forms & Real-Time Tracking
+
+![Form Handling](assets/screenshots/FormHandling.png)
+![Live Tracking](assets/screenshots/LiveTracking.png)
+
+* Complex form state management
+* Scalable input handling
+* Live operational tracking
+
+---
+
 ## 🧠 Key Engineering Highlights
 
 ### 🔐 1. Token Refresh Concurrency Handling
