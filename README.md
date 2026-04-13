@@ -27,38 +27,40 @@ This app is designed with a **scalable modular architecture** and focuses on **p
 ## 📸 Screenshots
 
 ### 📍 Live Tracking
-![Live Tracking](./assets/screenshots/LiveTracking.png)
+![Live Tracking](./assets/screenshots/Collection=1.png)
 
 ### 🧩 Module Selection
-![Module Selection](./assets/screenshots/ModuleSelection.png)
+![Module Selection](./assets/screenshots/Collection-Module.png)
 
-### 📊 Money Analysis
-![Money Analysis](./assets/screenshots/MoneyAnalysis.png)
+### 📊 Money Analysis (Gold Loan Dashboard)
+![Money Analysis](./assets/screenshots/GL.png)
 
-### 📋 My Visits
-![My Visits](./assets/screenshots/MyVisits.png)
+### 📋 My Visits / Tracking
+![My Visits](./assets/screenshots/GL-1.png)
 
-### 📷 OCR Verification
-![OCR](./assets/screenshots/OCR-Via-Camera-Upload.png)
+### 📷 Customer & Loan Details
+![Customer Details](./assets/screenshots/GL-one.png)
 
-### 💰 Payment Dashboard
-![Payment Dashboard](./assets/screenshots/Payment-Dashboard.png)
+### 💰 Loan Profile & Summary
+![Loan Summary](./assets/screenshots/GL-two.png)
 
-### 💸 Send Money
-![Send Money](./assets/screenshots/Send-Money.png)
+### 🧭 Module Selector (Alt View)
+![Module Selector](./assets/screenshots/Module Selector.png)
 
-### 💸 Receive Money
-![Receive Money](./assets/screenshots/Receive-Money.png)
+### 🧭 Module Selector (Compact)
+![Module Selector Compact](./assets/screenshots/Module-Selector.png)
 
-### 👤 User Profile
-![User Profile](./assets/screenshots/UserProfile.png)
+### 💳 Payment Dashboard
+![Payment Dashboard](./assets/screenshots/Payment-Module.png)
 
-### 🚗 Vehicle Loan
-![Vehicle Loan](./assets/screenshots/VehicleLoan.png)
+### 🚗 Vehicle Loan Dashboard
+![Vehicle Loan](./assets/screenshots/VL.png)
 
-### 🪙 Gold Loan
-![Gold Loan](./assets/screenshots/GoldLoan.png)
+### 🚗 Vehicle Loan Flow
+![Vehicle Loan Flow](./assets/screenshots/VL-1.png)
 
+### 🚗 Vehicle Loan Pipeline
+![Vehicle Loan Pipeline](./assets/screenshots/VL-2.png)
 ---
 
 ## ⚙️ Architecture Highlights
