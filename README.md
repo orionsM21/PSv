@@ -27,40 +27,40 @@ This app is designed with a **scalable modular architecture** and focuses on **p
 ## 📸 Screenshots
 
 ### 📍 Live Tracking
-![Live Tracking](./assets/screenshots/Collection=1.png)
+![Live Tracking](./assets/Collection=1.png)
 
 ### 🧩 Module Selection
-![Module Selection](./assets/screenshots/Collection-Module.png)
+![Module Selection](./assets/Collection-Module.png)
 
 ### 📊 Money Analysis (Gold Loan Dashboard)
-![Money Analysis](./assets/screenshots/GL.png)
+![Money Analysis](./assets/GL.png)
 
 ### 📋 My Visits / Tracking
-![My Visits](./assets/screenshots/GL-1.png)
+![My Visits](./assets/GL-1.png)
 
 ### 📷 Customer & Loan Details
-![Customer Details](./assets/screenshots/GL-one.png)
+![Customer Details](./assets/GL-one.png)
 
 ### 💰 Loan Profile & Summary
-![Loan Summary](./assets/screenshots/GL-two.png)
+![Loan Summary](./assets/GL-two.png)
 
 ### 🧭 Module Selector (Alt View)
-![Module Selector](./assets/screenshots/Module Selector.png)
+![Module Selector](./assets/Module Selector.png)
 
 ### 🧭 Module Selector (Compact)
-![Module Selector Compact](./assets/screenshots/Module-Selector.png)
+![Module Selector Compact](./assets/Module-Selector.png)
 
 ### 💳 Payment Dashboard
-![Payment Dashboard](./assets/screenshots/Payment-Module.png)
+![Payment Dashboard](./assets/Payment-Module.png)
 
 ### 🚗 Vehicle Loan Dashboard
-![Vehicle Loan](./assets/screenshots/VL.png)
+![Vehicle Loan](./assets/VL.png)
 
 ### 🚗 Vehicle Loan Flow
-![Vehicle Loan Flow](./assets/screenshots/VL-1.png)
+![Vehicle Loan Flow](./assets/VL-1.png)
 
 ### 🚗 Vehicle Loan Pipeline
-![Vehicle Loan Pipeline](./assets/screenshots/VL-2.png)
+![Vehicle Loan Pipeline](./assets/VL-2.png)
 ---
 
 ## ⚙️ Architecture Highlights
