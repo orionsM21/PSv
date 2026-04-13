@@ -1,79 +1,151 @@
-This is a new [**React Native**](https://reactnative.dev) project, bootstrapped using [`@react-native-community/cli`](https://github.com/react-native-community/cli).
+# 🚀 Fintech Mobile Application (React Native)
 
-# Getting Started
+A **production-grade fintech mobile application** built using React Native, handling real-world workflows like **Loan Origination (LOS), Collections, Payments, OCR, and Live Tracking**.
 
->**Note**: Make sure you have completed the [React Native - Environment Setup](https://reactnative.dev/docs/environment-setup) instructions till "Creating a new application" step, before proceeding.
+---
 
-## Step 1: Start the Metro Server
+## 🧠 Project Overview
 
-First, you will need to start **Metro**, the JavaScript _bundler_ that ships _with_ React Native.
+This app is designed with a **scalable modular architecture** and focuses on **performance, reliability, and real-world edge cases** like offline usage and payment safety.
 
-To start Metro, run the following command from the _root_ of your React Native project:
+---
 
-```bash
-# using npm
-npm start
+## 🎯 Key Features
 
-# OR using Yarn
-yarn start
-```
+- 📌 Loan Origination System (LOS)
+- 💰 Collections & Payment Integration
+- 📍 Real-time Agent Tracking (Map)
+- 📷 OCR-based Document Verification
+- 📊 Excel-based Auto Form Filling
+- 🔔 Push Notifications
+- 💬 Real-time Chat Module
+- 🔄 Offline-first Sync with Retry Mechanism
+- 🔐 Secure API & Token Management
 
-## Step 2: Start your Application
+---
 
-Let Metro Bundler run in its _own_ terminal. Open a _new_ terminal from the _root_ of your React Native project. Run the following command to start your _Android_ or _iOS_ app:
+## 📸 Screenshots
 
-### For Android
+### 📍 Live Tracking
+![Live Tracking](./assets/screenshots/LiveTracking.png)
 
-```bash
-# using npm
-npm run android
+### 🧩 Module Selection
+![Module Selection](./assets/screenshots/ModuleSelection.png)
 
-# OR using Yarn
-yarn android
-```
+### 📊 Money Analysis
+![Money Analysis](./assets/screenshots/MoneyAnalysis.png)
 
-### For iOS
+### 📋 My Visits
+![My Visits](./assets/screenshots/MyVisits.png)
 
-```bash
-# using npm
-npm run ios
+### 📷 OCR Verification
+![OCR](./assets/screenshots/OCR-Via-Camera-Upload.png)
 
-# OR using Yarn
-yarn ios
-```
+### 💰 Payment Dashboard
+![Payment Dashboard](./assets/screenshots/Payment-Dashboard.png)
 
-If everything is set up _correctly_, you should see your new app running in your _Android Emulator_ or _iOS Simulator_ shortly provided you have set up your emulator/simulator correctly.
+### 💸 Send Money
+![Send Money](./assets/screenshots/Send-Money.png)
 
-This is one way to run your app — you can also run it directly from within Android Studio and Xcode respectively.
+### 💸 Receive Money
+![Receive Money](./assets/screenshots/Receive-Money.png)
 
-## Step 3: Modifying your App
+### 👤 User Profile
+![User Profile](./assets/screenshots/UserProfile.png)
 
-Now that you have successfully run the app, let's modify it.
+### 🚗 Vehicle Loan
+![Vehicle Loan](./assets/screenshots/VehicleLoan.png)
 
-1. Open `App.tsx` in your text editor of choice and edit some lines.
-2. For **Android**: Press the <kbd>R</kbd> key twice or select **"Reload"** from the **Developer Menu** (<kbd>Ctrl</kbd> + <kbd>M</kbd> (on Window and Linux) or <kbd>Cmd ⌘</kbd> + <kbd>M</kbd> (on macOS)) to see your changes!
+### 🪙 Gold Loan
+![Gold Loan](./assets/screenshots/GoldLoan.png)
 
-   For **iOS**: Hit <kbd>Cmd ⌘</kbd> + <kbd>R</kbd> in your iOS Simulator to reload the app and see your changes!
+---
 
-## Congratulations! :tada:
+## ⚙️ Architecture Highlights
 
-You've successfully run and modified your React Native App. :partying_face:
+- 🧩 Modular Feature-based Architecture  
+- 🌐 Centralized API Layer (Axios Interceptors)  
+- 🔄 Retry Strategy & Error Handling  
+- 📦 Redux Toolkit for State Management  
+- ⚡ Performance Optimization (memoization, virtualization)  
+- 🔁 Offline Queue System  
+- 💳 Idempotent Payment Handling  
 
-### Now what?
+---
 
-- If you want to add this new React Native code to an existing application, check out the [Integration guide](https://reactnative.dev/docs/integration-with-existing-apps).
-- If you're curious to learn more about React Native, check out the [Introduction to React Native](https://reactnative.dev/docs/getting-started).
+## 📱 Demo Access
 
-# Troubleshooting
+👉 APK available in repository (check files section)
 
-If you can't get this to work, see the [Troubleshooting](https://reactnative.dev/docs/troubleshooting) page.
+### 🔑 Test Credentials
 
-# Learn More
+#### 1️⃣ LOS & Manager Flow
+- User: `EMP002`
+- Password: `pass@123`
 
-To learn more about React Native, take a look at the following resources:
+#### 2️⃣ Notifications
+- User: `EMP003`
+- Password: `pass@123`
 
-- [React Native Website](https://reactnative.dev) - learn more about React Native.
-- [Getting Started](https://reactnative.dev/docs/environment-setup) - an **overview** of React Native and how setup your environment.
-- [Learn the Basics](https://reactnative.dev/docs/getting-started) - a **guided tour** of the React Native **basics**.
-- [Blog](https://reactnative.dev/blog) - read the latest official React Native **Blog** posts.
-- [`@facebook/react-native`](https://github.com/facebook/react-native) - the Open Source; GitHub **repository** for React Native.
+#### 3️⃣ Collection & Tracking
+- User: `EMP059` / `EMP165`
+- Password: `Trub0@rd@123`
+
+#### 4️⃣ Loan & Payment
+- Login: Any credentials  
+- Includes OCR + Excel auto-fill + Payment  
+
+#### 5️⃣ Chat Module
+- Login via mobile/email  
+
+---
+
+## 🧩 Architecture Flow
+UI (React Native)
+↓
+Redux Toolkit
+↓
+API Layer (Axios + Interceptors)
+↓
+Backend
+↓
+Offline Queue (Retry + Sync)
+
+
+---
+
+## 🛠 Tech Stack
+
+- React Native  
+- Redux Toolkit  
+- JavaScript (ES6+)  
+- Axios / REST APIs  
+- React Navigation  
+- Android Studio / Xcode  
+
+---
+
+## 💡 Highlights
+
+- Real-world fintech use cases  
+- Production-level architecture  
+- Offline + retry handling  
+- Secure & scalable design  
+
+---
+
+## 👨‍💻 Author
+
+**Shivam Mishra**  
+📍 Mumbai  
+📞 +91 7506606986  
+📧 sm907295@gmail.com  
+
+🔗 GitHub: https://github.com/orionsM21  
+🔗 LinkedIn: https://www.linkedin.com/in/shivam-mishra-26577b201  
+
+---
+
+## ⭐ Support
+
+If you like this project, give it a ⭐
