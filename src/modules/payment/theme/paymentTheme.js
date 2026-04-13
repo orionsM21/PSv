@@ -1,0 +1,17 @@
+export const PAYMENT_THEME = {
+  background: ['#0B0F1A', '#161A25', '#232938'],
+  overlay: 'rgba(255,255,255,0.05)',
+  panel: 'rgba(255,255,255,0.04)',
+  panelStrong: 'rgba(255,255,255,0.08)',
+  border: 'rgba(250,204,21,0.14)',
+  textPrimary: '#F9FAFB',
+  textSecondary: '#D1D5DB',
+  textMuted: '#9CA3AF',
+  accent: '#FACC15',
+  accentSoft: 'rgba(250,204,21,0.14)',
+  accentMint: '#FEF3C7',
+  accentGold: '#FDE68A',
+  success: '#4ADE80',
+  danger: '#F87171',
+  warning: '#FACC15',
+};

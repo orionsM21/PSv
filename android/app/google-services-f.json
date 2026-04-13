@@ -1,0 +1,29 @@
+{
+  "project_info": {
+    "project_number": "499276340029",
+    "project_id": "chat-149b4",
+    "storage_bucket": "chat-149b4.firebasestorage.app"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:499276340029:android:e41f8b070e722e632dc354",
+        "android_client_info": {
+          "package_name": "com.m21.shivam"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyA5mttqk4NO8gDaDGL-rfEJ9QXhh--pwWk"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

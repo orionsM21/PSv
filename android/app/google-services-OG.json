@@ -1,0 +1,29 @@
+{
+  "project_info": {
+    "project_number": "1033901393899",
+    "project_id": "loan-origination-system-437db",
+    "storage_bucket": "loan-origination-system-437db.firebasestorage.app"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:1033901393899:android:4f948baf49f0664aca3bae",
+        "android_client_info": {
+          "package_name": "com.m21.shivam"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyBryuEH1vqH1LJzHO83j9o6GnFpg0EQRIc"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

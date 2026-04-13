@@ -1,0 +1,239 @@
+// // Top-level build file
+
+// buildscript {
+//     ext {
+//         buildToolsVersion = "35.0.0"
+//         minSdkVersion = 24
+//         compileSdkVersion = 35
+//         targetSdkVersion = 35
+//         ndkVersion = "26.1.10909125"
+//         kotlin_version = "1.9.23"
+//     }
+
+//     repositories {
+//         google()
+//         mavenCentral()
+//     }
+
+//     dependencies {
+//         classpath("com.android.tools.build:gradle:8.2.2")
+//         classpath("org.jetbrains.kotlin:kotlin-gradle-plugin:${kotlin_version}")
+//         classpath("com.facebook.react:react-native-gradle-plugin")
+//     }
+// }
+
+// /* -----------------------------------------------------------------
+//    FORCE Java + Kotlin JVM 17 (GLOBAL)
+// ------------------------------------------------------------------ */
+
+// allprojects {
+//     tasks.withType(JavaCompile).configureEach {
+//         it.sourceCompatibility = JavaVersion.VERSION_17
+//         it.targetCompatibility = JavaVersion.VERSION_17
+//     }
+
+//     tasks.withType(org.jetbrains.kotlin.gradle.tasks.KotlinCompile).configureEach {
+//         it.kotlinOptions.jvmTarget = "17"
+//     }
+// }
+
+// /* -----------------------------------------------------------------
+//    Configure all subprojects including React Native libraries
+// ------------------------------------------------------------------ */
+
+// subprojects {
+
+//     afterEvaluate { subproject ->
+
+//         if (subproject.hasProperty("android")) {
+//             subproject.android {
+
+//                 if (it.hasProperty("buildFeatures")) {
+//                     it.buildFeatures.buildConfig = true
+//                 }
+
+//                 if (!it.hasProperty("namespace") || !it.namespace) {
+//                     def manifestFile = file("${subproject.projectDir}/src/main/AndroidManifest.xml")
+//                     if (manifestFile.exists()) {
+//                         def matcher = manifestFile.getText() =~ /package="([^"]+)"/
+//                         if (matcher.find()) {
+//                             it.namespace = matcher.group(1)
+//                             println("🧩 Auto-namespace applied for ${subproject.name}: ${matcher.group(1)}")
+//                         }
+//                     }
+//                 }
+
+//                 it.compileOptions {
+//                     sourceCompatibility = JavaVersion.VERSION_17
+//                     targetCompatibility = JavaVersion.VERSION_17
+//                 }
+//             }
+//         }
+
+//         // Kotlin globally aligned to JVM 17
+//         subproject.tasks.withType(org.jetbrains.kotlin.gradle.tasks.KotlinCompile).configureEach {
+//             it.kotlinOptions.jvmTarget = "17"
+//         }
+
+//         // Force toolchain
+//         subproject.plugins.withId("java") {
+//             subproject.java {
+//                 toolchain {
+//                     languageVersion = JavaLanguageVersion.of(17)
+//                 }
+//             }
+//         }
+//     }
+
+//     // Align androidx versions
+//     configurations.all {
+//         resolutionStrategy {
+//             force "androidx.core:core:1.15.0"
+//             force "androidx.core:core-ktx:1.15.0"
+//         }
+//     }
+// }
+
+// gradle.projectsEvaluated {
+//     allprojects {
+//         tasks.withType(JavaCompile).configureEach {
+//             it.options.release = 17
+//             it.sourceCompatibility = JavaVersion.VERSION_17
+//             it.targetCompatibility = JavaVersion.VERSION_17
+//         }
+
+//         tasks.withType(org.jetbrains.kotlin.gradle.tasks.KotlinCompile).configureEach {
+//             it.kotlinOptions.jvmTarget = "17"
+//         }
+//     }
+// }
+
+
+// ✅ Top-level Gradle file for React Native 0.72.x projects
+// Compatible with AGP 8.2+, Kotlin 1.8.22, and Java 17.
+
+buildscript {
+    ext {
+        buildToolsVersion = "35.0.0"
+        minSdkVersion = 24
+        compileSdkVersion = 35
+        targetSdkVersion = 35
+        ndkVersion = "26.1.10909125"
+        kotlin_version = "1.8.22"
+    }
+
+    repositories {
+        google()
+        mavenCentral()
+    }
+
+    dependencies {
+        classpath("com.android.tools.build:gradle:8.2.2")
+        classpath("org.jetbrains.kotlin:kotlin-gradle-plugin:$kotlin_version")
+        classpath("com.facebook.react:react-native-gradle-plugin")
+        classpath("com.google.gms:google-services:4.4.0")
+    }
+}
+
+allprojects {
+    repositories {
+        google()
+        mavenCentral()
+
+        maven { url("$rootDir/../node_modules/react-native/android") }
+        maven { url("$rootDir/../node_modules/jsc-android/dist") }
+        maven { url "https://www.jitpack.io" }
+    }
+}
+
+subprojects {
+
+    configurations.all {
+        resolutionStrategy {
+
+            /** 🔒 CRITICAL FIXES (RN 0.72 SAFE) */
+            force "com.google.errorprone:error_prone_annotations:2.18.0"
+
+            // ✅ MUST be <= 1.10.1 for compileSdk 33
+            force "androidx.core:core:1.15.0"
+            force "androidx.core:core-ktx:1.15.0"
+
+            force "androidx.activity:activity:1.7.2"
+            force "androidx.activity:activity-ktx:1.7.2"
+
+            // force "com.google.android.gms:play-services-basement:18.5.0"
+            // force "com.google.android.gms:play-services-base:18.5.0"
+
+            eachDependency { details ->
+                // if (details.requested.group == "com.google.android.gms") {
+
+                //     if (details.requested.name == "play-services-maps") {
+                //         details.useVersion "18.1.0"
+                //     }
+                //     if (details.requested.name == "play-services-location") {
+                //         details.useVersion "21.0.1"
+                //     }
+                //     if (details.requested.name in ["play-services-base", "play-services-basement"]) {
+                //         details.useVersion "18.2.0"
+                //     }
+                //     if (details.requested.name == "play-services-tasks") {
+                //         details.useVersion "18.0.2"
+                //     }
+                // }
+
+                if (details.requested.group == "org.jetbrains.kotlin") {
+                details.useVersion("1.8.22")
+                details.because("Force Kotlin version to match AGP 8+")
+            }
+            }
+        }
+    }
+
+    afterEvaluate { subproject ->
+        if (subproject.hasProperty("android")) {
+            subproject.android {
+
+                compileOptions {
+                    sourceCompatibility JavaVersion.VERSION_17
+                    targetCompatibility JavaVersion.VERSION_17
+                }
+
+                if (it.hasProperty("buildFeatures")) {
+                    it.buildFeatures.buildConfig = true
+                }
+
+                // Auto namespace fix
+                if (!it.hasProperty("namespace") || !it.namespace) {
+                    def manifest = file("${subproject.projectDir}/src/main/AndroidManifest.xml")
+                    if (manifest.exists()) {
+                        def matcher = manifest.text =~ /package="([^"]+)"/
+                        if (matcher.find()) {
+                            it.namespace = matcher.group(1)
+                        }
+                    }
+                }
+            }
+        }
+
+      
+
+         // Enforce Kotlin → JVM 17
+        subproject.tasks.withType(org.jetbrains.kotlin.gradle.tasks.KotlinCompile).configureEach {
+            it.kotlinOptions.jvmTarget = "17"
+        }
+
+        // Ensure Gradle toolchain uses Java 17
+        subproject.plugins.withId("java") {
+            subproject.java {
+                toolchain {
+                    languageVersion = JavaLanguageVersion.of(17)
+                }
+            }
+        }
+    }
+}
+
+
+gradle.startParameter.excludedTaskNames += ["lintVitalRelease"]
+
+println("✅ RN 0.72 Android build config loaded (Java 11, stable)")

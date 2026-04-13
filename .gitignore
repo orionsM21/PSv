@@ -1,0 +1,48 @@
+# Node
+node_modules/
+npm-debug.log*
+yarn-error.log*
+
+# Env
+.env
+.env.*
+
+# Logs
+*.log
+
+# OS
+.DS_Store
+Thumbs.db
+
+# Android
+android/app/build/
+android/.gradle/
+.cxx/
+
+# iOS
+ios/Pods/
+ios/build/
+
+# Xcode
+DerivedData/
+*.xcuserstate
+
+# IntelliJ
+.idea/
+*.iml
+
+# Metro
+.metro-health-check*
+
+# Coverage
+coverage/
+
+# Build
+build/
+.gradle/
+
+# Fastlane
+**/fastlane/report.xml
+**/fastlane/Preview.html
+**/fastlane/screenshots
+**/fastlane/test_output
