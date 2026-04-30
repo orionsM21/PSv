@@ -90,8 +90,7 @@ This app is designed with a **scalable modular architecture** and focuses on **p
 - Password: `pass@123`
 
 #### 3️⃣ Collection & Tracking
-- User: `EMP059` / `EMP165`
-- Password: `Trub0@rd@123`
+
 
 #### 4️⃣ Loan & Payment
 - Login: Any credentials  
